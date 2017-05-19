@@ -1,6 +1,7 @@
 require('dotenv-safe').config();
 
 const app = require('express')();
+app.disable('x-powered-by');
 
 require('@dnode/middlewares')(app, []);
 
