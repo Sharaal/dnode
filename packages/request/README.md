@@ -29,7 +29,7 @@ const google = new RequestBuilder({
   url: 'http://google.de',
 });
 
-const response = await google.request().send();
+const response = await google.send();
 ```
 
 ## Define and use a class for more complex options
@@ -59,7 +59,5 @@ class SearchOptions {
 }
 
 const response = await google
-  .request()
-  .addOptions(new SearchOptions('how to use google search'))
-  .send();
+  .send(new SearchOptions('how to use google search'));
 ```
