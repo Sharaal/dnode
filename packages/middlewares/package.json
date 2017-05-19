@@ -1,0 +1,13 @@
+{
+  "engines": {
+    "node": "^7.6.0"
+  },
+  "name": "@dnode/middlewares",
+  "version": "0.0.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@dnode/handler": "^1.0.1"
+  }
+}
