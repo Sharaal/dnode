@@ -1,0 +1,14 @@
+{
+  "engines": {
+    "node": "^7.6.0"
+  },
+  "name": "@dnode/name",
+  "version": "0.0.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "dotenv-safe": "^4.0.4"
+  },
+  "devDependencies": {}
+}
