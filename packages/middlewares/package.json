@@ -9,5 +9,6 @@
   },
   "dependencies": {
     "@dnode/handler": "^1.0.1"
-  }
+  },
+  "devDependencies": {}
 }
