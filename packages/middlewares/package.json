@@ -3,13 +3,13 @@
     "node": "^7.6.0"
   },
   "name": "@dnode/middlewares",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@dnode/handler": "^1.0.2"
+    "@dnode/handler": "^1.0.3"
   },
   "devDependencies": {}
 }
