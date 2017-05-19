@@ -7,6 +7,9 @@
   "publishConfig": {
     "access": "public"
   },
+  "scripts": {
+    "start": "node src/web.js"
+  },
   "dependencies": {
     "@dnode/controllers": "^1.0.0",
     "@dnode/middlewares": "^1.0.1",
