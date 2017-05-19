@@ -1,0 +1,10 @@
+{
+  "engines": {
+    "node": "^7.6.0"
+  },
+  "name": "@dnode/name",
+  "version": "0.0.0",
+  "publishConfig": {
+    "access": "public"
+  }
+}
