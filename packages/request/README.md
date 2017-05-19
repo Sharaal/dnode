@@ -3,7 +3,7 @@
 ## Simplest usage
 
 ```javascript
-const Request = require('drequest').Request;
+const Request = require('@dnode/request').Request;
 
 const response = await new Request().get('http://google.de');
 ```
@@ -11,7 +11,7 @@ const response = await new Request().get('http://google.de');
 ## Set options for a request by a name
 
 ```javascript
-const RequestBuilder = require('drequest').RequestBuilder;
+const RequestBuilder = require('@dnode/request').RequestBuilder;
 
 const requestBuilder = new RequestBuilder().setOptions('google', {
   url: 'http://google.de',
@@ -23,7 +23,7 @@ const response = await RequestBuilder.request('google').send();
 ## Set options for all requests
 
 ```javascript
-const RequestBuilder = require('drequest').RequestBuilder;
+const RequestBuilder = require('@dnode/request').RequestBuilder;
 
 const google = new RequestBuilder({
   url: 'http://google.de',
