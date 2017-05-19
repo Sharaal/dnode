@@ -5,7 +5,7 @@
   "name": "@dnode/prettier",
   "version": "1.0.0",
   "bin": {
-    "@dnode/prettier": "./index.sh"
+    "dnode-prettier": "./index.sh"
   },
   "preferGlobal": true,
   "publishConfig": {

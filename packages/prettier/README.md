@@ -7,5 +7,5 @@ npm i -g prettier @dnode/prettier
 # Usage
 
 ```bash
-@dnode/prettier
+dnode-prettier
 ```
