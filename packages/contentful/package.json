@@ -4,6 +4,7 @@
   },
   "name": "@dnode/contentful",
   "version": "1.0.0",
+  "description": "",
   "publishConfig": {
     "access": "public"
   },

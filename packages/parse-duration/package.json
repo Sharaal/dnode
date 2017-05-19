@@ -4,6 +4,7 @@
   },
   "name": "@dnode/parse-duration",
   "version": "1.0.0",
+  "description": "",
   "publishConfig": {
     "access": "public"
   },

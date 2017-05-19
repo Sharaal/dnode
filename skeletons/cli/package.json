@@ -4,6 +4,7 @@
   },
   "name": "@dnode/name",
   "version": "0.0.0",
+  "description": "",
   "bin": {
     "@dnode/name": "./index.sh"
   },

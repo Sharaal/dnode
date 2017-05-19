@@ -4,6 +4,7 @@
   },
   "name": "@dnode/request",
   "version": "1.0.1",
+  "description": "",
   "publishConfig": {
     "access": "public"
   },

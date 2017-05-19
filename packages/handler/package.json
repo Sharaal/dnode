@@ -4,6 +4,7 @@
   },
   "name": "@dnode/handler",
   "version": "1.0.2",
+  "description": "",
   "publishConfig": {
     "access": "public"
   },
