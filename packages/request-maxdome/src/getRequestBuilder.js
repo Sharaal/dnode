@@ -1,3 +1,4 @@
+const AssetsOptions = require('./AssetsOptions');
 const MaxdomeOptions = require('./MaxdomeOptions');
 const RequestBuilder = require('@dnode/request').RequestBuilder;
 const TipOfTheDaysOptions = require('./TipOfTheDaysOptions');
