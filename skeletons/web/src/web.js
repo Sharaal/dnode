@@ -5,7 +5,7 @@ app.disable('x-powered-by');
 
 require('@dnode/middlewares')(app, []);
 
-require('@dnode/controllers')(app, [requrire('./controller')]);
+require('@dnode/controllers')(app, [require('./controller')()]);
 
 if (module.parent) {
   module.exports = app;
