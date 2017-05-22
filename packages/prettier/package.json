@@ -5,13 +5,13 @@
   "name": "@dnode/prettier",
   "version": "1.0.3",
   "description": "",
-  "bin": {
-    "dnode-prettier": "./index.sh"
-  },
-  "preferGlobal": true,
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {},
+  "bin": {
+    "dnode-prettier": "./index.sh"
+  },
+  "preferGlobal": true
 }

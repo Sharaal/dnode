@@ -5,13 +5,13 @@
   "name": "@dnode/name",
   "version": "0.0.0",
   "description": "",
-  "bin": {
-    "@dnode/name": "./index.sh"
-  },
-  "preferGlobal": true,
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {},
+  "bin": {
+    "@dnode/name": "./index.sh"
+  },
+  "preferGlobal": true
 }
