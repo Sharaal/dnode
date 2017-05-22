@@ -11,7 +11,7 @@
   "dependencies": {},
   "devDependencies": {},
   "bin": {
-    "@dnode/name": "./index.sh"
+    "dnode-name": "./index.sh"
   },
   "preferGlobal": true
 }

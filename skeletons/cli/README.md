@@ -7,5 +7,5 @@ npm i -g @dnode/name
 # Usage
 
 ```bash
-@dnode/name
+dnode-name
 ```
