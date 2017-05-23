@@ -5,6 +5,8 @@
   "name": "@dnode/prettier",
   "version": "1.0.4",
   "description": "",
+  "repository": "sharaal/dnode",
+  "license": "MIT",
   "publishConfig": {
     "access": "public"
   },

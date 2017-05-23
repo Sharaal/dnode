@@ -5,6 +5,8 @@
   "name": "@dnode/parse-duration",
   "version": "1.0.1",
   "description": "",
+  "repository": "sharaal/dnode",
+  "license": "MIT",
   "publishConfig": {
     "access": "public"
   },

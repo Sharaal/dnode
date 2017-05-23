@@ -5,6 +5,8 @@
   "name": "@dnode/handler",
   "version": "1.0.3",
   "description": "",
+  "repository": "sharaal/dnode",
+  "license": "MIT",
   "publishConfig": {
     "access": "public"
   },
