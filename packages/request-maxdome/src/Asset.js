@@ -18,7 +18,7 @@ class Asset {
       this.title += ` (Staffel ${data.number})`;
     }
     this.searchTitle = data.title.replace(' (Hot from the US)', '');
-    this.hotFromUS = data.title.includes(' (Hot from the US)');
+    this.hotFromTheUS = data.title.includes(' (Hot from the US)');
     this.episodeTitle = data.episodeTitle;
     this.episodeNumber = data.episodeNumber;
     this.seasonNumber = data.seasonNumber || data.number;
