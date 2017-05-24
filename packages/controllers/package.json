@@ -10,6 +10,8 @@
   "publishConfig": {
     "access": "public"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@dnode/handler": "^1.0.4"
+  },
   "devDependencies": {}
 }
