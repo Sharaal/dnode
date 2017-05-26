@@ -2,8 +2,14 @@ const Request = require('./Request');
 
 class RequestBuilder {
   constructor(defaultOptions) {
+    this.errorLoggers = [];
     this.defaultOptions = defaultOptions;
     this.options = {};
+  }
+
+  addErrorLogger(errorLogger) {
+    this.errorLoggers.push(errorLogger);
+    return this;
   }
 
   setOptions(name, options) {
@@ -16,6 +22,9 @@ class RequestBuilder {
       names = [names];
     }
     const request = new Request(this.defaultOptions);
+    for (const errorLogger of this.errorLoggers) {
+      request.addErrorLogger(errorLogger);
+    }
     for (const name of names) {
       request.addOptions(this.options[name]);
     }

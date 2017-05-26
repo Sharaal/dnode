@@ -8,12 +8,18 @@ const URI = require('urijs');
 
 class Request {
   constructor(options) {
+    this.errorLoggers = [];
     this.options = {
       timeout: 1000,
     };
     if (options) {
       this.addOptions(options);
     }
+  }
+
+  addErrorLogger(errorLogger) {
+    this.errorLoggers.push(errorLogger);
+    return this;
   }
 
   addOptions(options) {
@@ -66,7 +72,11 @@ class Request {
     if (typeof options.body === 'object') {
       options.json = true;
     }
-    return rp(options);
+    const promise = rp(options);
+    for (const errorLogger of this.errorLoggers) {
+      promise.catch(e => { errorLogger.onError(e); });
+    }
+    return promise;
   }
 
   delete(path, options) {
