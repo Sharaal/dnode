@@ -4,6 +4,21 @@
 The information which will be used:
 * user-agent: `${app.name} v${app.version} via ${lib.name} v${lib.version}`
 
+## Initialize with useful environment variables
+
+`apikey` and `appid` are only needed if there are requests with another platform as `webportal`. `hostname` and `protocol` has the production api (https://heimdall.maxdome.de) as default.
+
+```javascript
+const maxdome = require('@dnode/request-maxdome').getRequestBuilder({
+  maxdomeOptions: {
+    apikey: process.env.MAXDOME_APIKEY,
+    appid: process.env.MAXDOME_APPID,
+    hostname: process.env.MAXDOME_HOSTNAME,
+    protocol: process.env.MAXDOME_PROTOCOL,
+  }
+});
+```
+
 ## Get information for a specific asset by ID
 
 ```javascript

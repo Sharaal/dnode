@@ -6,8 +6,8 @@ const lib = JSON.parse(fs.readFileSync(`${__dirname}/../package.json`));
 class MaxdomeOptions {
   constructor(
     {
-      apikey: apikey = process.env.MAXDOME_APIKEY,
-      appid: appid = process.env.MAXDOME_APPID,
+      apikey,
+      appid,
       hostname: hostname = 'heimdall.maxdome.de/api',
       protocol: protocol = 'https',
     } = {}
