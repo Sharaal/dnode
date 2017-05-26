@@ -74,7 +74,9 @@ class Request {
     }
     const promise = rp(options);
     for (const errorLogger of this.errorLoggers) {
-      promise.catch(e => { errorLogger.onError(e); });
+      promise.catch(e => {
+        errorLogger.onError(e);
+      });
     }
     return promise;
   }
