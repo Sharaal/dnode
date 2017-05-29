@@ -1,0 +1,24 @@
+{
+  "private": true,
+  "engines": {
+    "node": "^7.6.0"
+  },
+  "name": "@dnode/name",
+  "version": "0.0.0",
+  "description": "",
+  "repository": "sharaal/dnode",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "dependencies": {
+    "@dnode/ws-verifyclient-jwt": "^1.0.2",
+    "dotenv-safe": "^4.0.4",
+    "ws": "^3.0.0"
+  },
+  "devDependencies": {}
+}
