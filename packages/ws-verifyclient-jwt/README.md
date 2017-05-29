@@ -3,7 +3,7 @@
 ```javascript
 const wss = new (require('ws').Server)({
   port: process.env.PORT,
-  verifyClient: require('@dnode/ws-verifyClient-jwt')({
+  verifyClient: require('@dnode/ws-verifyclient-jwt')({
     jwtSecret: process.env.JWT_SECRET,
   }),
 });
