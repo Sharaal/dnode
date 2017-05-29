@@ -8,8 +8,6 @@ module.exports = ({ level, timestamp } = {}) => {
   }
   return new winston.Logger({
     level,
-    transports: [
-      new winston.transports.Console({ timestamp }),
-    ],
+    transports: [new winston.transports.Console({ timestamp })],
   });
 };
