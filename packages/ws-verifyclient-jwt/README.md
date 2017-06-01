@@ -1,5 +1,7 @@
 # Usage
 
+## Server
+
 ```javascript
 const wss = new (require('ws').Server)({
   port: process.env.PORT,
@@ -10,5 +12,15 @@ const wss = new (require('ws').Server)({
 
 wss.on('connection', (ws, req) => {
   console.log(req.user);
+});
+```
+
+## Client
+
+```javascript
+const ws = new (require('ws'))('url', {
+  headers: {
+    Authorization: 'Bearer token',
+  },
 });
 ```
