@@ -3,7 +3,7 @@
     "node": "^7.6.0"
   },
   "name": "@dnode/middlewares",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "",
   "repository": "sharaal/dnode",
   "license": "MIT",
@@ -11,7 +11,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@dnode/handler": "^1.0.4"
+    "@dnode/handler": "^1.0.5"
   },
   "devDependencies": {}
 }
