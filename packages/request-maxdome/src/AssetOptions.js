@@ -13,10 +13,11 @@ class AssetOptions {
   toRequestOptions() {
     return {
       method: 'get',
-      transform: data => new Asset(data, {
-        hostname: this.hostname,
-        protocol: this.protocol,
-      }),
+      transform: data =>
+        new Asset(data, {
+          hostname: this.hostname,
+          protocol: this.protocol,
+        }),
       url: {
         path: `v1/assets/${this.assetId}`,
       },
