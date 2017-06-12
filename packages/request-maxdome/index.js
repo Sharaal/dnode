@@ -1,5 +1,6 @@
 module.exports = {
   Asset: require('./src/Asset'),
+  AssetOptions: require('./src/AssetOptions'),
   AssetsOptions: require('./src/AssetsOptions'),
   AssetsQueryOptions: require('./src/AssetsQueryOptions'),
   MaxdomeOptions: require('./src/MaxdomeOptions'),

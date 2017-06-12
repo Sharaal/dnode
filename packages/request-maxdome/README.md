@@ -23,12 +23,10 @@ const maxdome = require('@dnode/request-maxdome').getRequestBuilder({
 
 ```javascript
 const maxdome = require('@dnode/request-maxdome').getRequestBuilder();
-const AssetsQueryOptions = require('@dnode/request-maxdome').AssetsQueryOptions;
+const AssetOptions = require('@dnode/request-maxdome').AssetOptions;
 
 const assetId = 'assetId';
-const assetsQueryOptions = new AssetsQueryOptions(assetId);
-
-const assets = await maxdome.request('assets').send(assetsQueryOptions);
+const assets = await maxdome.send(new AssetOptions(assetId));
 ```
 
 ## Search assets by title and get the first 3 results
