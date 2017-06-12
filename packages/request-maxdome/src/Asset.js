@@ -54,6 +54,7 @@ class Asset {
     this.genres = data.genreList
       .filter(genre => genre.genreType === 'genre')
       .map(genre => genre.value);
+    this.languages = data.languageList;
     this.link = `${protocol}://${hostname}/${data.id}`;
     this.productionYear = data.productionYear;
     this.rating = data.userrating;
