@@ -58,6 +58,14 @@ class Asset {
     this.productionYear = data.productionYear;
     this.rating = data.userrating;
   }
+
+  getImage(width = 204, height = 295) {
+    if (this.image) {
+      return this.image
+        .replace('__WIDTH__', width)
+        .replace('__HEIGHT__', height);
+    }
+  }
 }
 
 module.exports = Asset;
