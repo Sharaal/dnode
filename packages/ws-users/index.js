@@ -23,9 +23,7 @@ module.exports = ({ wss }) => {
     req.user.connections.push({ ws });
 
     ws.on('close', () => {
-      req.user.connections = req.user.connections.filter(
-        connection => connection.ws !== ws
-      );
+      req.user.connections = req.user.connections.filter(connection => connection.ws !== ws);
       if (req.user.connections.length === 0) {
         users.emit('close', { user: req.user });
         delete users[userId];

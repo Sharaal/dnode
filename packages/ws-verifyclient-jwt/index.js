@@ -8,9 +8,7 @@ module.exports = ({ jwtSecret }) => (info, callback) => {
     }
     const [scheme, token] = authorization.split(' ');
     if (scheme !== 'Bearer') {
-      throw new Error(
-        'Invalid scheme in authorization header, supported: Bearer'
-      );
+      throw new Error('Invalid scheme in authorization header, supported: Bearer');
     }
     if (!token) {
       throw new Error('Missing token in authorization header');

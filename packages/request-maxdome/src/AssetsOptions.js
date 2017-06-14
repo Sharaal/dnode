@@ -1,9 +1,7 @@
 const Asset = require('./Asset');
 
 class AssetsOptions {
-  constructor(
-    { hostname: hostname = 'maxdome.de', protocol: protocol = 'http' } = {}
-  ) {
+  constructor({ hostname: hostname = 'maxdome.de', protocol: protocol = 'http' } = {}) {
     this.hostname = hostname;
     this.protocol = protocol;
   }
