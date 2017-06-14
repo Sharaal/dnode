@@ -9,9 +9,15 @@ describe('/packages/parse-duration', () => {
     assert.deepEqual(actual, expected);
   });
 
-  it('1 hour 20 minutes in seconds', () => {
+  it('1 hour 20 minutes in seconds (with second parameter)', () => {
     const actual = 4800;
     const expected = parseDuration('1h 20m', 's');
+    assert.deepEqual(actual, expected);
+  });
+
+  it('1 hour 20 minutes in seconds (with "in" keyword)', () => {
+    const actual = 4800;
+    const expected = parseDuration('1h 20m in s');
     assert.deepEqual(actual, expected);
   });
 });
