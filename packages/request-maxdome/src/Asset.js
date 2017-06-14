@@ -52,6 +52,14 @@ class Asset {
         countTotal: data.userrating.countTotal,
       };
     }
+    if (data.creditList) {
+      this.actors = data.creditList
+        .filter(credit => credit.creditType === 'actor')
+        .map(credit => ({ name: credit.value }));
+      this.directors = data.creditList
+        .filter(credit => credit.creditType === 'director')
+        .map(credit => ({ name: credit.value }));
+    }
   }
 
   getImage(width = 204, height = 295) {
