@@ -37,15 +37,21 @@ class Asset {
     if (data.mediaUsageList.includes('DTO') || data.mediaUsageList.includes('TVOD')) {
       this.areas.push('store');
     }
-
-    this.countries = data.countryList;
+    this.countries = data.countryList || [];
     this.duration = data.duration;
     this.fskLevels = data.fskLevelList;
-    this.genres = data.genreList.filter(genre => genre.genreType === 'genre').map(genre => genre.value);
+    this.genres = data.genreList
+      .filter(genre => genre.genreType === 'genre' || genre.genreType === '_spielfilm')
+      .map(genre => genre.value);
     this.languages = data.languageList;
     this.link = `${protocol}://${hostname}/${data.id}`;
     this.productionYear = data.productionYear;
-    this.rating = data.userrating;
+    if (data.userrating) {
+      this.rating = {
+        averageRating: data.userrating.averageRating,
+        countTotal: data.userrating.countTotal,
+      };
+    }
   }
 
   getImage(width = 204, height = 295) {
