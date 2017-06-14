@@ -1,5 +1,7 @@
 class Asset {
   constructor(data, { hostname: hostname = 'maxdome.de', protocol: protocol = 'http' } = {}) {
+    this._rawData = data;
+    
     this.id = data.id;
 
     const types = {
@@ -37,6 +39,7 @@ class Asset {
     if (data.mediaUsageList.includes('DTO') || data.mediaUsageList.includes('TVOD')) {
       this.areas.push('store');
     }
+
     this.countries = data.countryList || [];
     this.duration = data.duration;
     this.fskLevels = data.fskLevelList;
@@ -46,12 +49,14 @@ class Asset {
     this.languages = data.languageList;
     this.link = `${protocol}://${hostname}/${data.id}`;
     this.productionYear = data.productionYear;
+
     if (data.userrating) {
       this.rating = {
         averageRating: data.userrating.averageRating,
         countTotal: data.userrating.countTotal,
       };
     }
+
     if (data.creditList) {
       this.actors = data.creditList
         .filter(credit => credit.creditType === 'actor')
