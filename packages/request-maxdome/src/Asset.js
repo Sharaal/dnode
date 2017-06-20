@@ -111,7 +111,7 @@ class Asset {
         path = `/${slugify(this.originalTitle)}-${this.id}.html`;
         break;
       case 'season':
-        if (this.seasonNumber === 1) {
+        if (this.seasonNumber === '1') {
           path = `/${slugify(this.originalTitle)}-b${this.referenceId}.html`;
         } else {
           path = `/${slugify(this.originalTitle)}-s${this.seasonNumber}-b${this.id}.html`;
