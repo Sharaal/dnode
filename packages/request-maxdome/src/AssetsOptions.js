@@ -1,8 +1,8 @@
 const Asset = require('./Asset');
 
 class AssetsOptions {
-  constructor({ hostname: hostname = 'maxdome.de', protocol: protocol = 'http' } = {}) {
-    this.hostname = hostname;
+  constructor({ hostnames: hostnames = { package: 'maxdome.de', store: 'store.maxdome.de' }, protocol: protocol = 'https' } = {}) {
+    this.hostnames = hostnames;
     this.protocol = protocol;
   }
 
@@ -13,7 +13,7 @@ class AssetsOptions {
         data.assetList.map(
           asset =>
             new Asset(asset, {
-              hostname: this.hostname,
+              hostnames: this.hostnames,
               protocol: this.protocol,
             })
         ),
