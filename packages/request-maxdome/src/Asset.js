@@ -82,9 +82,9 @@ class Asset {
   }
 
   getCanonicalURL() {
-    let hostname = hostnames.package;
+    let hostname = this.hostnames.package;
     if (this.areas.includes('store')) {
-      hostname = hostnames.store;
+      hostname = this.hostnames.store;
     }
     const slug = this.originalTitle
       .replace(/ä/g, 'ae')
