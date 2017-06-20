@@ -1,5 +1,8 @@
 class Asset {
-  constructor(data, { hostnames: hostnames = { package: 'maxdome.de', store: 'store.maxdome.de' }, protocol: protocol = 'http' } = {}) {
+  constructor(
+    data,
+    { hostnames: hostnames = { package: 'maxdome.de', store: 'store.maxdome.de' }, protocol: protocol = 'https' } = {}
+  ) {
     this._rawData = data;
 
     this.hostnames = hostnames;
