@@ -1,3 +1,15 @@
+function slugify(title) {
+  return title
+    .replace(/ä/g, 'ae')
+    .replace(/ö/g, 'oe')
+    .replace(/ü/g, 'ue')
+    .replace(/ß/g, 'ss')
+    .replace(/[.,"'?!;:]/g, '')
+    .replace(/\W/g, '-')
+    .replace(/_/g, '-')
+    .toLowerCase();
+}
+
 class Asset {
   constructor(
     data,
@@ -85,20 +97,30 @@ class Asset {
   }
 
   getCanonicalURL() {
-    let hostname = this.hostnames.package;
-    if (this.areas.includes('store')) {
-      hostname = this.hostnames.store;
+    let hostname = this.hostnames.store;
+    if (!this.areas.includes('store')) {
+      hostname = this.hostnames.package;
     }
-    const slug = this.originalTitle
-      .replace(/ä/g, 'ae')
-      .replace(/ö/g, 'oe')
-      .replace(/ü/g, 'ue')
-      .replace(/ß/g, 'ss')
-      .replace(/[.,"'?!;:]/g, '')
-      .replace(/\W/g, '-')
-      .replace(/_/g, '-')
-      .toLowerCase();
-    return `${this.protocol}://${hostname}/${slug}-${this.id}.html`;
+    let path = '';
+    switch (this.type) {
+      case 'episode':
+        path = `/${slugify(this.originalTitle)}/s${this.seasonNumber}/e${this.episodeNumber}-${slugify(this.episodeTitle)}-${this.id}.html`;
+        break;
+      case 'movie':
+        path = `/${slugify(this.originalTitle)}-${this.id}.html`;
+        break;
+      case 'season':
+        let season = '';
+        if (this.seasonNumber > 1) {
+          season = `-s${this.seasonNumber}`;
+        }
+        path = `/${slugify(this.originalTitle)}${season}-b${this.id}.html`;
+        break;
+      case 'series':
+        path = `/${slugify(this.originalTitle)}-b${this.id}.html`;
+        break;
+    }
+    return `${this.protocol}://${hostname}${path}`;
   }
 }
 
