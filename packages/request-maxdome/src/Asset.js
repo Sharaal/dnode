@@ -21,6 +21,7 @@ class Asset {
     this.protocol = protocol;
 
     this.id = data.id;
+    this.referenceId = data.referenceId;
 
     const types = {
       assetvideofilm: 'movie',
@@ -110,11 +111,11 @@ class Asset {
         path = `/${slugify(this.originalTitle)}-${this.id}.html`;
         break;
       case 'season':
-        let season = '';
-        if (this.seasonNumber > 1) {
-          season = `-s${this.seasonNumber}`;
+        if (this.seasonNumber === 1) {
+          path = `/${slugify(this.originalTitle)}${season}-b${this.referenceId}.html`;
+        } else {
+          path = `/${slugify(this.originalTitle)}${season}-s${this.seasonNumber}-b${this.id}.html`;
         }
-        path = `/${slugify(this.originalTitle)}${season}-b${this.id}.html`;
         break;
       case 'series':
         path = `/${slugify(this.originalTitle)}-b${this.id}.html`;
