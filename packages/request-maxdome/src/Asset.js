@@ -98,7 +98,7 @@ class Asset {
 
   getCanonicalURL() {
     let hostname = this.hostnames.store;
-    if (!this.areas.includes('store')) {
+    if (this.areas.includes('package')) {
       hostname = this.hostnames.package;
     }
     let path = '';
