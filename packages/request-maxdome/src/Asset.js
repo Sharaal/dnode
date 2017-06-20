@@ -1,7 +1,7 @@
 class Asset {
   constructor(data, { hostname: hostname = 'maxdome.de', protocol: protocol = 'http' } = {}) {
     this._rawData = data;
-    
+
     this.id = data.id;
 
     const types = {
@@ -69,7 +69,11 @@ class Asset {
 
   getImage(width = 204, height = 295) {
     if (this.image) {
-      return this.image.replace('__WIDTH__', width).replace('__HEIGHT__', height);
+      return {
+        height,
+        url: this.image.replace('__WIDTH__', width).replace('__HEIGHT__', height),
+        width,
+      };
     }
   }
 }
