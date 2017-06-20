@@ -1,6 +1,9 @@
 class Asset {
-  constructor(data, { hostname: hostname = 'maxdome.de', protocol: protocol = 'http' } = {}) {
+  constructor(data, { hostnames: hostnames = { package: 'maxdome.de', store: 'store.maxdome.de' }, protocol: protocol = 'http' } = {}) {
     this._rawData = data;
+
+    this.hostnames = hostnames;
+    this.protocol = protocol;
 
     this.id = data.id;
 
@@ -16,6 +19,7 @@ class Asset {
     if (this.type === 'season') {
       this.title += ` (Staffel ${data.number})`;
     }
+    this.originalTitle = data.title;
     this.searchTitle = data.title.replace(' (Hot From the UK)', '').replace(' (Hot from the US)', '');
     this.hotFromTheUK = data.title.includes(' (Hot From the UK)');
     this.hotFromTheUS = data.title.includes(' (Hot from the US)');
@@ -47,7 +51,7 @@ class Asset {
       .filter(genre => genre.genreType === 'genre' || genre.genreType === '_spielfilm')
       .map(genre => genre.value);
     this.languages = data.languageList;
-    this.link = `${protocol}://${hostname}/${data.id}`;
+    this.url = `${protocol}://${hostnames.package}/${data.id}`;
     this.productionYear = data.productionYear;
 
     if (data.userrating) {
@@ -75,6 +79,23 @@ class Asset {
         width,
       };
     }
+  }
+
+  getCanonicalURL() {
+    let hostname = hostnames.package;
+    if (this.areas.includes('store')) {
+      hostname = hostnames.store;
+    }
+    const slug = this.originalTitle
+      .replace(/ä/g, 'ae')
+      .replace(/ö/g, 'oe')
+      .replace(/ü/g, 'ue')
+      .replace(/ß/g, 'ss')
+      .replace(/[.,"'?!;:]/g, '')
+      .replace(/\W/g, '-')
+      .replace(/_/g, '-')
+      .toLowerCase();
+    return `${this.protocol}://${hostname}/${slug}-${this.id}.html`;
   }
 }
 
