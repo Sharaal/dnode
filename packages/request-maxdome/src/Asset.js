@@ -112,9 +112,9 @@ class Asset {
         break;
       case 'season':
         if (this.seasonNumber === 1) {
-          path = `/${slugify(this.originalTitle)}${season}-b${this.referenceId}.html`;
+          path = `/${slugify(this.originalTitle)}-b${this.referenceId}.html`;
         } else {
-          path = `/${slugify(this.originalTitle)}${season}-s${this.seasonNumber}-b${this.id}.html`;
+          path = `/${slugify(this.originalTitle)}-s${this.seasonNumber}-b${this.id}.html`;
         }
         break;
       case 'series':
