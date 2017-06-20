@@ -3,7 +3,7 @@
     "node": "^7.6.0"
   },
   "name": "@dnode/request-maxdome",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "description": "",
   "repository": "sharaal/dnode",
   "license": "MIT",
