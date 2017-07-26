@@ -13,7 +13,10 @@ function slugify(title) {
 class Asset {
   constructor(
     data,
-    { hostnames: hostnames = { package: 'www.maxdome.de', store: 'store.maxdome.de' }, protocol: protocol = 'https' } = {}
+    {
+      hostnames: hostnames = { package: 'www.maxdome.de', store: 'store.maxdome.de' },
+      protocol: protocol = 'https',
+    } = {}
   ) {
     this._rawData = data;
 
