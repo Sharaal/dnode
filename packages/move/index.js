@@ -1,3 +1,7 @@
+function isArrived(object, target) {
+  return object.x === target.x && object.y === target.y;
+}
+
 function getC(a, b) {
   return Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2));
 }
@@ -26,6 +30,13 @@ function round(number) {
 }
 
 module.exports = function getMove(object, target) {
+  if (isArrived(object, target)) {
+    return {
+      x: 0,
+      y: 0,
+    };
+  }
+
   const a = target.y - object.y;
   const b = target.x - object.x;
 
