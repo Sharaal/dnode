@@ -22,7 +22,7 @@ function getA(c, alpha) {
   return c * Math.sin(alpha);
 }
 
-function round(number) {
+function getRound(number) {
   if (number < 0) {
     return Math.floor(number);
   }
@@ -66,9 +66,9 @@ module.exports = function getMove(object, target) {
     };
   }
 
-    x: round(getB(object.speed, getBeta(b, c))),
-    y: round(getA(object.speed, getAlpha(a, c))),
   const move = {
+    x: getRound(getB(object.speed, getBeta(b, c))),
+    y: getRound(getA(object.speed, getAlpha(a, c))),
     move: true,
   };
   move.arrive = isArrive(object, move, target);
