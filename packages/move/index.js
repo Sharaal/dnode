@@ -37,6 +37,13 @@ module.exports = function getMove(object, target) {
     };
   }
 
+  if (object.speed === 0) {
+    return {
+      x: 0,
+      y: 0,
+    };
+  }
+
   const a = target.y - object.y;
   const b = target.x - object.x;
 
