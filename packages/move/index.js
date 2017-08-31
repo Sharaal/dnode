@@ -29,11 +29,17 @@ function round(number) {
   return Math.ceil(number);
 }
 
+function isArrive(object, move, target) {
+  return isArrived({ x: object.x + move.x, y: object.y + move.y }, target);
+}
+
 module.exports = function getMove(object, target) {
   if (isArrived(object, target)) {
     return {
       x: 0,
       y: 0,
+      move: false,
+      arrive: true,
     };
   }
 
@@ -41,6 +47,8 @@ module.exports = function getMove(object, target) {
     return {
       x: 0,
       y: 0,
+      move: false,
+      arrive: false,
     };
   }
 
@@ -53,11 +61,16 @@ module.exports = function getMove(object, target) {
     return {
       x: b,
       y: a,
+      move: true,
+      arrive: true,
     };
   }
 
-  return {
     x: round(getB(object.speed, getBeta(b, c))),
     y: round(getA(object.speed, getAlpha(a, c))),
+  const move = {
+    move: true,
   };
+  move.arrive = isArrive(object, move, target);
+  return move;
 };
