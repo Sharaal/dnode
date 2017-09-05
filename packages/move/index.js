@@ -36,19 +36,12 @@ function isArrive(object, move, target) {
 module.exports = function getMove(object, target) {
   if (isArrived(object, target)) {
     return {
-      x: 0,
-      y: 0,
-      move: false,
       arrive: true,
-    };
-  }
-
-  if (object.speed === 0) {
-    return {
+      distance: 0,
+      move: false,
+      steps: 0,
       x: 0,
       y: 0,
-      move: false,
-      arrive: false,
     };
   }
 
@@ -57,19 +50,34 @@ module.exports = function getMove(object, target) {
 
   const c = getC(a, b);
 
+  if (object.speed === 0) {
+    return {
+      arrive: false,
+      distance: c,
+      move: false,
+      steps: 0,
+      x: 0,
+      y: 0,
+    };
+  }
+
   if (c <= object.speed) {
     return {
+      arrive: true,
+      distance: c,
+      move: true,
+      steps: 1,
       x: b,
       y: a,
-      move: true,
-      arrive: true,
     };
   }
 
   const move = {
+    distance: c,
+    move: true,
+    steps: Math.ceil(c / object.speed),
     x: getRound(getB(object.speed, getBeta(b, c))),
     y: getRound(getA(object.speed, getAlpha(a, c))),
-    move: true,
   };
   move.arrive = isArrive(object, move, target);
   return move;
