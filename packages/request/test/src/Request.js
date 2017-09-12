@@ -1,6 +1,6 @@
 const assert = require('assert');
 
-const Request = require('../../../../packages/request/src/Request');
+const Request = require('../../').Request;
 
 const defaultOptions = { timeout: 1000 };
 
