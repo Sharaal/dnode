@@ -1,4 +1,6 @@
-module.exports = {
+const getRequestBuilder = require('./src/getRequestBuilder');
+
+Object.assign(getRequestBuilder, {
   Asset: require('./src/Asset'),
   AssetOptions: require('./src/AssetOptions'),
   AssetsOptions: require('./src/AssetsOptions'),
@@ -10,4 +12,6 @@ module.exports = {
   TipOfTheDay: require('./src/TipOfTheDay'),
   TipOfTheDaysOptions: require('./src/TipOfTheDaysOptions'),
   getRequestBuilder: require('./src/getRequestBuilder'),
-};
+});
+
+module.exports = getRequestBuilder;
