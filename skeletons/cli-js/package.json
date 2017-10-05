@@ -12,5 +12,7 @@
   },
   "bin": {
     "dnode-name": "./index.js"
-  }
+  },
+  "dependencies": {},
+  "devDependencies": {}
 }
