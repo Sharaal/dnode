@@ -1,0 +1,17 @@
+{
+  "engines": {
+    "node": "^7.6.0"
+  },
+  "name": "@dnode/env",
+  "version": "0.0.0",
+  "description": "",
+  "repository": "sharaal/dnode",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "dotenv": "^4.0.0",
+    "dotenv-safe": "^4.0.4"
+  }
+}
