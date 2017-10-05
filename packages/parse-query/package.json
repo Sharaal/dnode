@@ -2,7 +2,7 @@
   "engines": {
     "node": "^7.6.0"
   },
-  "name": "@dnode/name",
+  "name": "@dnode/parse-query",
   "version": "0.0.0",
   "description": "",
   "repository": "sharaal/dnode",
@@ -11,9 +11,5 @@
     "access": "public"
   },
   "dependencies": {},
-  "devDependencies": {},
-  "bin": {
-    "dnode-name": "./index.sh"
-  },
-  "preferGlobal": true
+  "devDependencies": {}
 }

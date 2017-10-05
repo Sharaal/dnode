@@ -9,5 +9,8 @@
   "license": "MIT",
   "publishConfig": {
     "access": "public"
+  },
+  "bin": {
+    "dnode-name": "./index.sh"
   }
 }
