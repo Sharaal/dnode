@@ -1,0 +1,16 @@
+{
+  "engines": {
+    "node": "^7.6.0"
+  },
+  "name": "@dnode/express",
+  "version": "0.0.0",
+  "description": "",
+  "repository": "sharaal/dnode",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "express": "^4.16.1"
+  }
+}
