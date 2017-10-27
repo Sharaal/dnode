@@ -1,10 +1,10 @@
 const express = require('express');
 
-module.exports = init => {
+module.exports = async init => {
   const app = express();
   app.disable('x-powered-by');
 
-  init(app, express);
+  await init(app, express);
 
   const port = process.env.PORT;
   if (!port) {
