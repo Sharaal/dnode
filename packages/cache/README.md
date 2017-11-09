@@ -2,11 +2,10 @@
 
 ```javascript
 const cache = require('@dnode/cache')(client);
-cache(
+const value = await cache(
   'key',
-  callback => {
-    callback('value');
-  },
-  value => {}
+  () => {
+    return 'value';
+  }
 );
 ```
