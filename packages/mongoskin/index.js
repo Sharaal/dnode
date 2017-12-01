@@ -3,10 +3,14 @@ const mongoskin = require('mongoskin');
 module.exports = (url, collections = []) => {
   const db = mongoskin.db(url, { safe: true });
   db.toObjectID = mongoskin.helper.toObjectID;
-  for (const [collection, indexes = []] of collections) {
-    db.bind(collection);
+  for (let collection of collections) {
+    if (!Array.isArray(collection)) {
+      collection = [collection];
+    }
+    const [name, indexes = []] = collection;
+    db.bind(name);
     for (const [keys, options = {}] of indexes) {
-      db[collection].ensureIndex(keys, options, () => {});
+      db[name].ensureIndex(keys, options, () => {});
     }
   }
   return db;
