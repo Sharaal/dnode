@@ -13,7 +13,10 @@ class Asset {
   constructor(
     data,
     {
-      hostnames: hostnames = { package: 'www.maxdome.de', store: 'store.maxdome.de' },
+      hostnames: hostnames = {
+        package: 'www.maxdome.de',
+        store: 'store.maxdome.de',
+      },
       protocol: protocol = 'https',
     } = {}
   ) {
