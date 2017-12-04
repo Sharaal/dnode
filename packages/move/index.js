@@ -1,5 +1,5 @@
-function isArrived(object, target) {
-  return object.x === target.x && object.y === target.y;
+function isArrived(objectPosition, targetPosition) {
+  return objectPosition.x === targetPosition.x && objectPosition.y === targetPosition.y;
 }
 
 function getC(a, b) {
@@ -29,12 +29,12 @@ function getRound(number) {
   return Math.ceil(number);
 }
 
-function isArrive(object, move, target) {
-  return isArrived({ x: object.x + move.x, y: object.y + move.y }, target);
+function isArrive(objectPosition, move, targetPosition) {
+  return isArrived({ x: objectPosition.x + move.x, y: objectPosition.y + move.y }, targetPosition);
 }
 
-module.exports = function getMove(object, target) {
-  if (isArrived(object, target)) {
+module.exports = function getMove(objectPosition, objectSpeed, targetPosition) {
+  if (isArrived(objectPosition, targetPosition)) {
     return {
       arrive: true,
       distance: 0,
@@ -45,12 +45,12 @@ module.exports = function getMove(object, target) {
     };
   }
 
-  const a = target.y - object.y;
-  const b = target.x - object.x;
+  const a = targetPosition.y - objectPosition.y;
+  const b = targetPosition.x - objectPosition.x;
 
   const c = getC(a, b);
 
-  if (object.speed === 0) {
+  if (objectSpeed === 0) {
     return {
       arrive: false,
       distance: c,
@@ -61,7 +61,7 @@ module.exports = function getMove(object, target) {
     };
   }
 
-  if (c <= object.speed) {
+  if (c <= objectSpeed) {
     return {
       arrive: true,
       distance: c,
@@ -75,10 +75,10 @@ module.exports = function getMove(object, target) {
   const move = {
     distance: c,
     move: true,
-    steps: Math.ceil(c / object.speed),
-    x: getRound(getB(object.speed, getBeta(b, c))),
-    y: getRound(getA(object.speed, getAlpha(a, c))),
+    steps: Math.ceil(c / objectSpeed),
+    x: getRound(getB(objectSpeed, getBeta(b, c))),
+    y: getRound(getA(objectSpeed, getAlpha(a, c))),
   };
-  move.arrive = isArrive(object, move, target);
+  move.arrive = isArrive(objectPosition, move, targetPosition);
   return move;
 };

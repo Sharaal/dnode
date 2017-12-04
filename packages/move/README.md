@@ -5,10 +5,11 @@
 ```javascript
 const getMove = require('@dnode/move.2d');
 
-const object = { x: -1, y: 5, speed: 5 };
-const target = { x: 10, y: -10 };
+const objectPosition = { x: -1, y: 5 };
+const objectSpeed = 5;
+const targetPosition = { x: 10, y: -10 };
 
-const move = getMove(object, target);
+const move = getMove(objectPosition, objectSpeed, targetPosition);
 ```
 
 ## Move the object till it arrives the target
@@ -16,13 +17,14 @@ const move = getMove(object, target);
 ```javascript
 const getMove = require('@dnode/move.2d');
 
-const object = { x: 10, y: -10, speed: 20 };
-const target = { x: 800, y: 700 };
+const objectPosition = { x: 10, y: -10 };
+const objectSpeed = 20;
+const targetPosition = { x: 800, y: 700 };
 
 let move;
 do {
-  move = getMove(object, target);
-  object.x += move.x;
-  object.y += move.y;
-} while(move.move && !move.arrive);
+  move = getMove(objectPosition, objectSpeed, targetPosition);
+  objectPosition.x += move.x;
+  objectPosition.y += move.y;
+} while (move.move && !move.arrive);
 ```
