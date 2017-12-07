@@ -7,7 +7,7 @@ if [ "$1" ]
     $COMMAND "$1"
 elif [ -f ".gitignore" ]
   then
-    find . -name "*.js" | grep -v -f .gitignore | xargs $COMMAND
+    git ls-files -- "*.js" | xargs $COMMAND
 else
   $COMMAND "**/*.js"
 fi
