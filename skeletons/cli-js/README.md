@@ -1,7 +1,5 @@
 # Usage
 
-## local
-
 ```bash
 npm i -S @dnode/name 
 ```
@@ -14,12 +12,6 @@ npm i -S @dnode/name
 }
 ```
 
-## global
-
 ```bash
-npm i -g @dnode/name 
-```
-
-```bash
-dnode-name
+npm run name
 ```

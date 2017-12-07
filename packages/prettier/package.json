@@ -16,6 +16,5 @@
   "devDependencies": {},
   "bin": {
     "dnode-prettier": "./index.sh"
-  },
-  "preferGlobal": true
+  }
 }

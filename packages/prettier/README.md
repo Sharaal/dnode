@@ -1,11 +1,17 @@
-# Installation
-
-```bash
-npm i -g prettier @dnode/prettier
-```
-
 # Usage
 
 ```bash
-dnode-prettier
+npm i -S @dnode/prettier 
+```
+
+```json
+{
+  "scripts": {
+    "fmt": "dnode-prettier"
+  }
+}
+```
+
+```bash
+npm run fmt
 ```
