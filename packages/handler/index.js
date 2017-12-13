@@ -3,7 +3,7 @@ module.exports = handler => async (req, res, next) => {
     await handler(req, res, next);
   } catch (e) {
     if (!res.headersSent) {
-      const status = e.status || e.statusCode || 500;
+      const status = e.code || e.status || e.statusCode || 500;
       if (e.message) {
         res.status(status).send(e.message);
       } else {
