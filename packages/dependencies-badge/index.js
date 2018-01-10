@@ -23,12 +23,16 @@ async function countDependencies(directoryPath) {
       continue;
     }
     if (item.startsWith('@')) {
-      const [subcount, subtree] = await countDependencies(path.join(directoryPath, item));
+      const [subcount, subtree] = await countDependencies(
+        path.join(directoryPath, item)
+      );
       tree[item] = subtree;
       count += subcount;
     } else {
       count += 1;
-      const [subcount, subtree] = await countDependencies(path.join(directoryPath, item, 'node_modules'));
+      const [subcount, subtree] = await countDependencies(
+        path.join(directoryPath, item, 'node_modules')
+      );
       tree[item] = subtree;
       count += subcount;
     }
@@ -70,16 +74,25 @@ function formatTree(tree, deepth = 0, scope) {
     }
     formattedTree += `${'  '.repeat(deepth)}- ${formattedName}\n`;
     const subtree = tree[item];
-    formattedTree += formatTree(subtree, deepth + 1, item.startsWith('@') ? item : undefined);
+    formattedTree += formatTree(
+      subtree,
+      deepth + 1,
+      item.startsWith('@') ? item : undefined
+    );
   }
   return formattedTree;
 }
 
 (async () => {
-  let [count, tree] = await countDependencies(path.join(process.cwd(), 'node_modules'));
+  let [count, tree] = await countDependencies(
+    path.join(process.cwd(), 'node_modules')
+  );
   count = formatNumber(count);
   tree = formatTree(tree);
-  fs.writeFileSync(path.join(process.cwd(), 'DEPENDENCIES.md'), `# Dependencies: ${count}\n${tree ? `\n${tree}` : ''}`);
+  fs.writeFileSync(
+    path.join(process.cwd(), 'DEPENDENCIES.md'),
+    `# Dependencies: ${count}\n${tree ? `\n${tree}` : ''}`
+  );
   let readme;
   try {
     readme = fs.readFileSync(path.join(process.cwd(), 'README.md'));
