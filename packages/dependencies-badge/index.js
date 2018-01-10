@@ -20,7 +20,11 @@ function getTree(directoryPath) {
     }
     let subDirectoryPath = directoryPath;
     while (!tree[dependency]) {
-      const absolutePath = path.join(subDirectoryPath, 'node_modules', relativePath);
+      const absolutePath = path.join(
+        subDirectoryPath,
+        'node_modules',
+        relativePath
+      );
       if (fs.existsSync(absolutePath)) {
         tree[dependency] = getTree(absolutePath);
       } else {
