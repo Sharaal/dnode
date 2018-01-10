@@ -3,101 +3,94 @@
 const fs = require('fs');
 const path = require('path');
 
-async function readdir(directoryPath) {
-  return new Promise(resolve => {
-    fs.readdir(directoryPath, (err, items) => {
-      if (!items) {
-        resolve([]);
-      }
-      resolve(items);
-    });
-  });
-}
-
-async function countDependencies(directoryPath) {
-  let count = 0;
-  let tree = {};
-  const items = await readdir(directoryPath);
-  for (const item of items) {
-    if (item === '.bin') {
-      continue;
-    }
-    if (item.startsWith('@')) {
-      const [subcount, subtree] = await countDependencies(
-        path.join(directoryPath, item)
-      );
-      tree[item] = subtree;
-      count += subcount;
-    } else {
-      count += 1;
-      const [subcount, subtree] = await countDependencies(
-        path.join(directoryPath, item, 'node_modules')
-      );
-      tree[item] = subtree;
-      count += subcount;
-    }
+function getTree(directoryPath) {
+  const tree = {};
+  const packagePath = path.join(directoryPath, 'package.json');
+  if (!fs.existsSync(packagePath)) {
+    return tree;
   }
-  return [count, tree];
+  const dependencies = require(packagePath).dependencies || {};
+  for (let dependency in dependencies) {
+    let relativePath;
+    if (dependency.startsWith('@')) {
+      let [scope, name] = dependency.split('/');
+      relativePath = path.join(scope, name);
+    } else {
+      relativePath = dependency;
+    }
+    let subDirectoryPath = directoryPath;
+    while (!tree[dependency]) {
+      const absolutePath = path.join(subDirectoryPath, 'node_modules', relativePath);
+      if (fs.existsSync(absolutePath)) {
+        tree[dependency] = getTree(absolutePath);
+      } else {
+        if (subDirectoryPath === '/') {
+          break;
+        }
+        subDirectoryPath = path.resolve(path.join(subDirectoryPath, '..'));
+      }
+    }
+    tree[dependency] = tree[dependency] || {};
+  }
+  return tree;
 }
 
-function formatNumber(number) {
+function formatTree(tree, deepth = 0) {
+  let formattedTree = '';
+  for (const dependency in tree) {
+    formattedTree += `${'  '.repeat(deepth)}- [${dependency}](https://www.npmjs.com/package/${dependency})\n`;
+    formattedTree += formatTree(tree[dependency], deepth + 1);
+  }
+  return formattedTree;
+}
+
+function countTree(tree) {
+  let count = 0;
+  for (const dependency in tree) {
+    count += 1;
+    count += countTree(tree[dependency]);
+  }
+  return count;
+}
+
+function formatCount(count) {
   const dimensions = {
     M: 1000000,
     k: 1000,
   };
   for (const suffix in dimensions) {
     const divisor = dimensions[suffix];
-    if (number >= divisor) {
-      number = parseInt(number / parseInt(divisor / 10));
-      number = `${number / 10}${suffix}`;
+    if (count >= divisor) {
+      count = parseInt(count / parseInt(divisor / 10));
+      count = `${count / 10}${suffix}`;
       break;
     }
   }
-  return number;
+  return count;
 }
 
-function getColor(number) {
-  if (number === 0) {
+function getColor(count) {
+  if (count === 0) {
     return 'green';
   }
   return 'blue';
 }
 
-function formatTree(tree, deepth = 0, scope) {
-  let formattedTree = '';
-  for (const item in tree) {
-    let formattedName;
-    if (!item.startsWith('@')) {
-      formattedName = `[${item}](https://www.npmjs.com/package/${scope ? `${scope}/` : ''}${item})`;
-    } else {
-      formattedName = item;
-    }
-    formattedTree += `${'  '.repeat(deepth)}- ${formattedName}\n`;
-    const subtree = tree[item];
-    formattedTree += formatTree(
-      subtree,
-      deepth + 1,
-      item.startsWith('@') ? item : undefined
-    );
-  }
-  return formattedTree;
-}
-
 (async () => {
-  let [count, tree] = await countDependencies(
-    path.join(process.cwd(), 'node_modules')
-  );
-  count = formatNumber(count);
-  tree = formatTree(tree);
+  const tree = getTree(process.cwd());
+  const count = countTree(tree);
+  const formattedCount = formatCount(count);
+
   fs.writeFileSync(
     path.join(process.cwd(), 'DEPENDENCIES.md'),
-    `# Dependencies: ${count}\n${tree ? `\n${tree}` : ''}`
+    `# Dependencies: ${formattedCount}\n${count ? `\n${formatTree(tree)}` : ''}`
   );
+
   let readme;
   try {
     readme = fs.readFileSync(path.join(process.cwd(), 'README.md'));
   } catch (e) {}
-  const dependencies = `[![dependencies | ${count}](https://img.shields.io/badge/dependencies-${count}-${getColor(count)}.svg)](DEPENDENCIES.md)`;
+  const dependencies = `[![dependencies | ${formattedCount}](https://img.shields.io/badge/dependencies-${formattedCount}-${getColor(count)}.svg)](DEPENDENCIES.md)`;
   if (readme) {
     readme = readme.toString();
     const regex = /\[\!\[dependencies \| .*?\]\(https:\/\/img\.shields\.io\/badge\/dependencies-.*?-.*?\.svg\)\]\(DEPENDENCIES.md\)/;
