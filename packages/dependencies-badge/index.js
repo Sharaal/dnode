@@ -99,7 +99,7 @@ function getColor(count) {
 
   fs.writeFileSync(
     path.join(process.cwd(), 'DEPENDENCIES.md'),
-    `# Dependencies\n\nDirectly: ${formattedDirectCount}\nIndirectly: ${formattedCount}\n${count ? `\n${formatTree(tree)}` : ''}`
+    `# Dependencies\n\nDirectly: ${formattedDirectCount}\n\nIndirectly: ${formattedCount}\n${count ? `\n${formatTree(tree)}` : ''}`
   );
 
   let readme;
