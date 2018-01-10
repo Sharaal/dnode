@@ -59,12 +59,18 @@ function getColor(number) {
   return 'blue';
 }
 
-function formatTree(tree, deepth = 0) {
+function formatTree(tree, deepth = 0, scope) {
   let formattedTree = '';
   for (const item in tree) {
-    formattedTree += `${'  '.repeat(deepth)}- ${item}\n`;
+    let formattedName;
+    if (!item.startsWith('@')) {
+      formattedName = `[${item}](https://www.npmjs.com/package/${scope ? `${scope}/` : ''}${item})`;
+    } else {
+      formattedName = item;
+    }
+    formattedTree += `${'  '.repeat(deepth)}- ${formattedName}\n`;
     const subtree = tree[item];
-    formattedTree += formatTree(subtree, deepth + 1);
+    formattedTree += formatTree(subtree, deepth + 1, item.startsWith('@') ? item : undefined);
   }
   return formattedTree;
 }
