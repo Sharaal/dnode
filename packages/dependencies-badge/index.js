@@ -16,19 +16,24 @@ async function readdir(directoryPath) {
 
 async function countDependencies(directoryPath) {
   let count = 0;
+  let tree = {};
   const items = await readdir(directoryPath);
   for (const item of items) {
     if (item === '.bin') {
       continue;
     }
     if (item.startsWith('@')) {
-      count += await countDependencies(path.join(directoryPath, item));
-      continue;
+      const [subcount, subtree] = await countDependencies(path.join(directoryPath, item));
+      tree[item] = subtree;
+      count += subcount;
+    } else {
+      count += 1;
+      const [subcount, subtree] = await countDependencies(path.join(directoryPath, item, 'node_modules'));
+      tree[item] = subtree;
+      count += subcount;
     }
-    count += 1;
-    count += await countDependencies(path.join(directoryPath, item, 'node_modules'));
   }
-  return count;
+  return [count, tree];
 }
 
 function formatNumber(number) {
@@ -54,16 +59,28 @@ function getColor(number) {
   return 'blue';
 }
 
+function formatTree(tree, deepth = 0) {
+  let formattedTree = '';
+  for (const item in tree) {
+    formattedTree += `${'  '.repeat(deepth)}- ${item}\n`;
+    const subtree = tree[item];
+    formattedTree += formatTree(subtree, deepth + 1);
+  }
+  return formattedTree;
+}
+
 (async () => {
-  const count = formatNumber(await countDependencies(path.join(process.cwd(), 'node_modules')));
+  let [count, tree] = await countDependencies(path.join(process.cwd(), 'node_modules'));
+  count = formatNumber(count);
+  fs.writeFileSync(path.join(process.cwd(), 'DEPENDENCIES.md'), `# Dependencies: ${count}\n${formatTree(tree)}`);
   let readme;
   try {
     readme = fs.readFileSync(path.join(process.cwd(), 'README.md'));
   } catch (e) {}
-  const dependencies = `![dependencies | ${count}](https://img.shields.io/badge/dependencies-${count}-${getColor(count)}.svg)`;
+  const dependencies = `[![dependencies | ${count}](https://img.shields.io/badge/dependencies-${count}-${getColor(count)}.svg)](DEPENDENCIES.md)`;
   if (readme) {
     readme = readme.toString();
-    const regex = /\!\[dependencies \| .*?\]\(https:\/\/img\.shields\.io\/badge\/dependencies-.*?-.*?\.svg\)/;
+    const regex = /\[\!\[dependencies \| .*?\]\(https:\/\/img\.shields\.io\/badge\/dependencies-.*?-.*?\.svg\)\]\(DEPENDENCIES.md\)/;
     if (regex.test(readme)) {
       readme = readme.replace(regex, dependencies);
     } else {
