@@ -56,13 +56,15 @@ function directCountTree(tree) {
   return count;
 }
 
-function countTree(tree) {
-  let count = 0;
-  for (const dependency in tree) {
-    count += 1;
-    count += countTree(tree[dependency]);
+function countTree(tree, set) {
+  if (!set) {
+    set = new Set();
   }
-  return count;
+  for (const dependency in tree) {
+    set.add(dependency);
+    countTree(tree[dependency], set);
+  }
+  return set.size;
 }
 
 function formatCount(count) {
