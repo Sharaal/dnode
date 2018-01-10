@@ -72,7 +72,8 @@ function formatTree(tree, deepth = 0) {
 (async () => {
   let [count, tree] = await countDependencies(path.join(process.cwd(), 'node_modules'));
   count = formatNumber(count);
-  fs.writeFileSync(path.join(process.cwd(), 'DEPENDENCIES.md'), `# Dependencies: ${count}\n${formatTree(tree)}`);
+  tree = formatTree(tree);
+  fs.writeFileSync(path.join(process.cwd(), 'DEPENDENCIES.md'), `# Dependencies: ${count}\n${tree ? `\n${tree}` : ''}`);
   let readme;
   try {
     readme = fs.readFileSync(path.join(process.cwd(), 'README.md'));
