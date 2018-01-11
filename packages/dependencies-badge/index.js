@@ -3,7 +3,8 @@
 const fs = require('fs');
 const path = require('path');
 
-function getTree(directoryPath) {
+function getTree(directoryPath, set) {
+  set = set || new Set();
   const tree = {};
   const packagePath = path.join(directoryPath, 'package.json');
   if (!fs.existsSync(packagePath)) {
@@ -11,6 +12,10 @@ function getTree(directoryPath) {
   }
   const dependencies = require(packagePath).dependencies || {};
   for (let dependency in dependencies) {
+    if (set.has(dependency)) {
+      continue;
+    }
+    set.add(dependency);
     let relativePath;
     if (dependency.startsWith('@')) {
       let [scope, name] = dependency.split('/');
@@ -26,7 +31,7 @@ function getTree(directoryPath) {
         relativePath
       );
       if (fs.existsSync(absolutePath)) {
-        tree[dependency] = getTree(absolutePath);
+        tree[dependency] = getTree(absolutePath, new Set(set));
       } else {
         if (subDirectoryPath === '/') {
           break;
