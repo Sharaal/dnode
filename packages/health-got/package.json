@@ -1,0 +1,17 @@
+{
+  "engines": {
+    "node": "^7.6.0"
+  },
+  "name": "@dnode/health-got",
+  "version": "0.0.0",
+  "description": "",
+  "repository": "sharaal/dnode",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "got": "^8.0.2"
+  },
+  "devDependencies": {}
+}
