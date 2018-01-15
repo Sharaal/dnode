@@ -23,3 +23,7 @@ require('@dnode/controllers')(app, [health]);
    ]
 }
 ```
+
+# Plugins
+
+* Check with HTTP requests: [`health-got`](https://www.npmjs.com/package/@dnode/health-got)
