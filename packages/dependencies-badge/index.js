@@ -43,7 +43,10 @@ function getTree(directoryPath, set) {
 function formatTree(tree, deepth = 0) {
   let formattedTree = '';
   for (const dependency in tree) {
-    formattedTree += `${'  '.repeat(deepth)}- [${dependency}](https://www.npmjs.com/package/${dependency})\n`;
+    formattedTree += `${'  '.repeat(deepth)}`;
+    const subCount = directCountTree(tree[dependency]);
+    formattedTree += `- [${dependency}](https://www.npmjs.com/package/${dependency}) (${subCount})\n`;
+
     formattedTree += formatTree(tree[dependency], deepth + 1);
   }
   return formattedTree;
@@ -102,7 +105,7 @@ function dependenciesBadge(directoryPath) {
     path.join(directoryPath, 'DEPENDENCIES.md'),
     `# Dependencies\n\nDirectly: ${formattedDirectCount}\n\nIndirectly: ${formattedCount}\n${
       count ? `\n${formatTree(tree)}` : ''
-      }`
+    }`
   );
 
   let readme;
