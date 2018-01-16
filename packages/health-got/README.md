@@ -1,3 +1,5 @@
+[![dependencies | 1 | 44](https://img.shields.io/badge/dependencies-1%20|%2044-blue.svg)](DEPENDENCIES.md)
+
 Provides check function for [`health`](http://npmjs.com/@dnode/health) performing HTTP requests.
 
 # Usage

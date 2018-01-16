@@ -1,7 +1,7 @@
 {
   "scripts": {
     "fmt": "dnode-prettier",
-    "postinstall": "lerna bootstrap",
+    "postinstall": "lerna bootstrap && node packages/dependencies-badge",
     "test": "mocha --recursive './packages/*/test/**/*.js'"
   },
   "devDependencies": {

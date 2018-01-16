@@ -1,3 +1,5 @@
+[![dependencies | 6 | 58](https://img.shields.io/badge/dependencies-6%20|%2058-blue.svg)](DEPENDENCIES.md)
+
 # Usage
 
 ## Simplest usage
