@@ -125,7 +125,9 @@ class Asset {
     let path = '';
     switch (this.type) {
       case 'episode':
-        path = `/${slugify(this.originalTitle)}/s${this.seasonNumber}/e${this.episodeNumber}-${slugify(this.episodeTitle)}-${this.id}.html`;
+        path = `/${slugify(this.originalTitle)}/s${this.seasonNumber}/e${this.episodeNumber}-${slugify(
+          this.episodeTitle
+        )}-${this.id}.html`;
         break;
       case 'movie':
         path = `/${slugify(this.originalTitle)}-${this.id}.html`;

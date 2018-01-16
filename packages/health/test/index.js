@@ -85,7 +85,9 @@ describe('GET /health', () => {
     const app = express();
 
     const health = require('../index')({
-      a: () => { throw new Error('test'); },
+      a: () => {
+        throw new Error('test');
+      },
       b: () => {},
     });
     require('@dnode/controllers')(app, [health]);

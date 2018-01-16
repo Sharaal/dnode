@@ -25,11 +25,7 @@ function getTree(directoryPath, set) {
     }
     let subDirectoryPath = directoryPath;
     while (!tree[dependency]) {
-      const absolutePath = path.join(
-        subDirectoryPath,
-        'node_modules',
-        relativePath
-      );
+      const absolutePath = path.join(subDirectoryPath, 'node_modules', relativePath);
       if (fs.existsSync(absolutePath)) {
         tree[dependency] = getTree(absolutePath, new Set(set));
       } else {
@@ -104,14 +100,18 @@ function getColor(count) {
 
   fs.writeFileSync(
     path.join(process.cwd(), 'DEPENDENCIES.md'),
-    `# Dependencies\n\nDirectly: ${formattedDirectCount}\n\nIndirectly: ${formattedCount}\n${count ? `\n${formatTree(tree)}` : ''}`
+    `# Dependencies\n\nDirectly: ${formattedDirectCount}\n\nIndirectly: ${formattedCount}\n${
+      count ? `\n${formatTree(tree)}` : ''
+    }`
   );
 
   let readme;
   try {
     readme = fs.readFileSync(path.join(process.cwd(), 'README.md'));
   } catch (e) {}
-  const dependencies = `[![dependencies | ${formattedDirectCount} | ${formattedCount}](https://img.shields.io/badge/dependencies-${formattedDirectCount}%20|%20${formattedCount}-${getColor(count)}.svg)](DEPENDENCIES.md)`;
+  const dependencies = `[![dependencies | ${formattedDirectCount} | ${formattedCount}](https://img.shields.io/badge/dependencies-${formattedDirectCount}%20|%20${formattedCount}-${getColor(
+    count
+  )}.svg)](DEPENDENCIES.md)`;
   if (readme) {
     readme = readme.toString();
     const regex = /\[\!\[dependencies \| .*?\]\(https:\/\/img\.shields\.io\/badge\/dependencies-.*?-.*?\.svg\)\]\(DEPENDENCIES.md\)/;
