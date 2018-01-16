@@ -91,23 +91,23 @@ function getColor(count) {
   return 'blue';
 }
 
-(async () => {
-  const tree = getTree(process.cwd());
+function dependenciesBadge(directoryPath) {
+  const tree = getTree(directoryPath);
   const directCount = directCountTree(tree);
   const formattedDirectCount = formatCount(directCount);
   const count = countTree(tree);
   const formattedCount = formatCount(count);
 
   fs.writeFileSync(
-    path.join(process.cwd(), 'DEPENDENCIES.md'),
+    path.join(directoryPath, 'DEPENDENCIES.md'),
     `# Dependencies\n\nDirectly: ${formattedDirectCount}\n\nIndirectly: ${formattedCount}\n${
       count ? `\n${formatTree(tree)}` : ''
-    }`
+      }`
   );
 
   let readme;
   try {
-    readme = fs.readFileSync(path.join(process.cwd(), 'README.md'));
+    readme = fs.readFileSync(path.join(directoryPath, 'README.md'));
   } catch (e) {}
   const dependencies = `[![dependencies | ${formattedDirectCount} | ${formattedCount}](https://img.shields.io/badge/dependencies-${formattedDirectCount}%20|%20${formattedCount}-${getColor(
     count
@@ -123,5 +123,18 @@ function getColor(count) {
   } else {
     readme = `${dependencies}\n`;
   }
-  fs.writeFileSync(path.join(process.cwd(), 'README.md'), readme);
+  fs.writeFileSync(path.join(directoryPath, 'README.md'), readme);
+}
+
+(async () => {
+  dependenciesBadge(process.cwd());
+  if (fs.existsSync(path.join(process.cwd(), 'lerna.json'))) {
+    try {
+      const packagesPath = path.join(process.cwd(), 'packages');
+      const dirs = fs.readdirSync(packagesPath);
+      for (const dir of dirs) {
+        dependenciesBadge(path.join(packagesPath, dir));
+      }
+    } catch (e) {}
+  }
 })();
