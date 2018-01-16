@@ -15,6 +15,7 @@
     "@dnode/controllers": "^1.0.5",
     "@dnode/env": "^1.0.0",
     "@dnode/express": "^1.0.1",
+    "@dnode/health": "^1.0.3",
     "@dnode/middlewares": "^1.0.5"
   },
   "devDependencies": {}
