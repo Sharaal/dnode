@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "test": "mocha --recursive './packages/*/test/**/*.js'",
-    "postinstall": "lerna bootstrap"
+    "postinstall": "lerna bootstrap",
+    "test": "mocha --recursive './packages/*/test/**/*.js'"
   },
   "devDependencies": {
     "lerna": "^2.7.1",
