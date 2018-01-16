@@ -3,7 +3,7 @@
     "node": "^7.6.0"
   },
   "name": "@dnode/ws-router-server",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "repository": "sharaal/dnode",
   "license": "MIT",
@@ -11,7 +11,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@dnode/ws-message": "^1.0.0"
+    "@dnode/ws-message": "^1.0.1"
   },
   "devDependencies": {}
 }
