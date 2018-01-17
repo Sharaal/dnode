@@ -10,12 +10,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "scripts": {
-    "postinstall": "dnode-dependencies-badge"
-  },
-  "devDependencies": {
-    "@dnode/dependencies-badge": "^1.7.0"
-  },
   "bin": {
     "dnode-name": "./index.js"
   }

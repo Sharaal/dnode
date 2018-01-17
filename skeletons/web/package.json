@@ -9,8 +9,9 @@
   "repository": "sharaal/dnode",
   "license": "MIT",
   "scripts": {
+    "postinstall": "dnode-dependencies-badge",
     "start": "node src/web.js",
-    "postinstall": "dnode-dependencies-badge"
+    "fmt": "dnode-prettier"
   },
   "dependencies": {
     "@dnode/controllers": "^1.0.5",
@@ -20,6 +21,7 @@
     "@dnode/middlewares": "^1.0.5"
   },
   "devDependencies": {
-    "@dnode/dependencies-badge": "^1.7.0"
+    "@dnode/dependencies-badge": "^1.7.0",
+    "@dnode/prettier": "^1.2.1"
   }
 }
