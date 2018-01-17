@@ -12,7 +12,5 @@
   },
   "bin": {
     "dnode-name": "./index.sh"
-  },
-  "dependencies": {},
-  "devDependencies": {}
+  }
 }

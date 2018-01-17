@@ -10,7 +10,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "dependencies": {},
   "devDependencies": {
     "@dnode/controllers": "^1.1.1",
     "express": "^4.16.2",

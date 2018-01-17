@@ -12,6 +12,5 @@
   },
   "dependencies": {
     "winston": "^2.3.1"
-  },
-  "devDependencies": {}
+  }
 }

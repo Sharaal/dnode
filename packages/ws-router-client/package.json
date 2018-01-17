@@ -12,6 +12,5 @@
   },
   "dependencies": {
     "@dnode/ws-message": "^1.0.1"
-  },
-  "devDependencies": {}
+  }
 }

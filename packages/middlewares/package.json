@@ -12,6 +12,5 @@
   },
   "dependencies": {
     "@dnode/handler": "^1.1.1"
-  },
-  "devDependencies": {}
+  }
 }

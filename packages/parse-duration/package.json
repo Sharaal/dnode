@@ -12,6 +12,5 @@
   },
   "dependencies": {
     "parse-duration": "^0.1.1"
-  },
-  "devDependencies": {}
+  }
 }

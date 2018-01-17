@@ -12,6 +12,5 @@
   },
   "dependencies": {
     "@dnode/request": "^1.3.1"
-  },
-  "devDependencies": {}
+  }
 }

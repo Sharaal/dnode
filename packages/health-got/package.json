@@ -12,6 +12,5 @@
   },
   "dependencies": {
     "got": "^8.0.2"
-  },
-  "devDependencies": {}
+  }
 }
