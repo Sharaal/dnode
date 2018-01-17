@@ -2,7 +2,7 @@ const assert = require('assert');
 const express = require('express');
 const request = require('supertest');
 
-describe('GET /health', () => {
+describe('packages/health', () => {
   it('should have outcome "UP" without any checks', done => {
     const app = express();
 

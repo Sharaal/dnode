@@ -2,7 +2,7 @@ const assert = require('assert');
 
 const parseDuration = require('../');
 
-describe('/packages/parse-duration', () => {
+describe('packages/parse-duration', () => {
   it('1 hour 20 minutes in milliseconds', () => {
     const actual = parseDuration('1h 20m');
     const expected = 4800000;
