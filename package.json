@@ -1,11 +1,10 @@
 {
   "scripts": {
-    "fmt": "dnode-prettier",
+    "fmt": "packages/prettier/index.sh",
     "postinstall": "lerna bootstrap && node packages/dependencies-badge",
     "test": "mocha --recursive './packages/*/test/**/*.js'"
   },
   "devDependencies": {
-    "@dnode/prettier": "^1.2.0",
     "lerna": "^2.7.1",
     "mocha": "^4.0.1"
   }
