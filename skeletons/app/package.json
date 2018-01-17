@@ -8,7 +8,13 @@
   "description": "",
   "repository": "sharaal/dnode",
   "license": "MIT",
+  "scripts": {
+    "postinstall": "dnode-dependencies-badge"
+  },
   "dependencies": {
     "@dnode/env": "^1.0.0"
+  },
+  "devDependencies": {
+    "@dnode/dependencies-badge": "^1.7.0"
   }
 }
