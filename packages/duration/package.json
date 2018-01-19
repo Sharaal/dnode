@@ -1,0 +1,16 @@
+{
+  "engines": {
+    "node": "^7.6.0"
+  },
+  "name": "@dnode/duration",
+  "version": "0.0.0",
+  "description": "",
+  "repository": "sharaal/dnode",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "parse-duration": "^0.1.1"
+  }
+}

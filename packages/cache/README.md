@@ -2,8 +2,6 @@
 
 # Usage
 
-Decorate a client (e.g. [redis](https://www.npmjs.com/package/@dnode/redis)) with caching. 
-
 ```javascript
 const cache = require('@dnode/cache')(client);
 
@@ -15,7 +13,19 @@ const value = await cache(
 );
 ```
 
-If the client supports `setJSON()` and `getJSON()` it will be used to encode/decode the values.
+If the client supports `setJSON()` and `getJSON()` (e.g. [redis](https://www.npmjs.com/package/@dnode/redis)) it will be 
+used to encode/decode the values.
+
+```javascript
+const cache = require('@dnode/cache')(client);
+
+const value = await cache(
+  'key',
+  async () => {
+    return { example: 'example' };
+  }
+);
+```
 
 ## Expire  
 
@@ -29,7 +39,22 @@ const value = await cache(
   async () => {
     return 'value';
   },
-  { expire: 60 }
+  { expire: 1 * 60 * 60 } // 1h
+);
+```
+
+If the client supports `second()` (e.g. [redis](https://www.npmjs.com/package/@dnode/duration)) it will be used.
+
+```javascript
+const cache = require('@dnode/cache')(client);
+const duration = require('@dnode/duration');
+
+const value = await cache(
+  'key',
+  async () => {
+    return 'value';
+  },
+  { expire: duration('1h') }
 );
 ```
 
