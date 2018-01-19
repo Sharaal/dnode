@@ -13,8 +13,8 @@ const value = await cache(
 );
 ```
 
-If the client supports `setJSON()` and `getJSON()` (e.g. [redis](https://www.npmjs.com/package/@dnode/redis)) it will be 
-used to encode/decode the values.
+If the client supports `setJSON()` and `getJSON()` (e.g. [@dnode/redis](https://www.npmjs.com/package/@dnode/redis)) it 
+will be used to encode/decode the values.
 
 ```javascript
 const cache = require('@dnode/cache')(client);
@@ -43,7 +43,7 @@ const value = await cache(
 );
 ```
 
-If the client supports `second()` (e.g. [redis](https://www.npmjs.com/package/@dnode/duration)) it will be used.
+If the client supports `second()` (e.g. [@dnode/duration](https://www.npmjs.com/package/@dnode/duration)) it will be used.
 
 ```javascript
 const cache = require('@dnode/cache')(client);
