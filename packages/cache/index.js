@@ -1,25 +1,19 @@
-module.exports = client => async (key, fallback, callback, expire) => {
-  if (!expire && typeof callback !== 'function') {
-    expire = callback;
-    callback = undefined;
-  }
-  let hit = true;
-  let value = await client.getJSON(key);
-  if (value) {
-    if (callback && (await callback(value, hit))) {
-      hit = false;
-    }
+module.exports = client => async (key, get, { expire, invalidate } = {}) => {
+  let value;
+  if (client.getJSON) {
+    value = await client.getJSON(key);
   } else {
-    hit = false;
+    value = await client.get(key);
   }
-  if (!hit) {
-    value = await fallback();
-    if (callback) {
-      callback(value);
+  if (!value || (invalidate && invalidate(value))) {
+    value = await get();
+    if (client.setJSON) {
+      await client.setJSON(key, value);
+    } else {
+      await client.set(key, value);
     }
-    await client.setJSON(key, value);
-    if (client.expire && expire) {
-      client.expire(key, expire);
+    if (expire) {
+      await client.expire(key, expire);
     }
   }
   return value;
