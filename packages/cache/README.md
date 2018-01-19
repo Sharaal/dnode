@@ -7,9 +7,7 @@ const cache = require('@dnode/cache')(client);
 
 const value = await cache(
   'key',
-  async () => {
-    return 'value';
-  }
+  async () => 'value'
 );
 ```
 
@@ -21,9 +19,7 @@ const cache = require('@dnode/cache')(client);
 
 const value = await cache(
   'key',
-  async () => {
-    return { example: 'example' };
-  }
+  async () => ({ example: 'example' })
 );
 ```
 
@@ -36,9 +32,7 @@ const cache = require('@dnode/cache')(client);
 
 const value = await cache(
   'key',
-  async () => {
-    return 'value';
-  },
+  async () => 'value',
   { expire: 1 * 60 * 60 } // 1h
 );
 ```
@@ -51,9 +45,7 @@ const duration = require('@dnode/duration');
 
 const value = await cache(
   'key',
-  async () => {
-    return 'value';
-  },
+  async () => 'value',
   { expire: duration('1h') }
 );
 ```
@@ -67,9 +59,7 @@ const cache = require('@dnode/cache')(client);
 
 const value = await cache(
   'key',
-  async () => {
-    return 'value';
-  },
+  async () => 'value',
   { invalidate: value => value.invalid }
 );
 ```
