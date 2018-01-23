@@ -2,7 +2,7 @@
   "scripts": {
     "fmt": "packages/prettier/index.sh",
     "postinstall": "lerna bootstrap && lerna exec ../dependencies-badge/index.js",
-    "test": "mocha --recursive './packages/*/test/**/*.js' && lerna exec --ignore '@dnode/parse-duration' --ignore '@dnode/swig' nsp check",
+    "test": "mocha --recursive './packages/*/test/**/*.js' && lerna exec --ignore '@dnode/parse-duration' --ignore '@dnode/swig' nsp check"
   },
   "devDependencies": {
     "lerna": "^2.7.1",
