@@ -129,15 +129,4 @@ function dependenciesBadge(directoryPath) {
   fs.writeFileSync(path.join(directoryPath, 'README.md'), readme);
 }
 
-(async () => {
-  dependenciesBadge(process.cwd());
-  if (fs.existsSync(path.join(process.cwd(), 'lerna.json'))) {
-    try {
-      const packagesPath = path.join(process.cwd(), 'packages');
-      const dirs = fs.readdirSync(packagesPath);
-      for (const dir of dirs) {
-        dependenciesBadge(path.join(packagesPath, dir));
-      }
-    } catch (e) {}
-  }
-})();
+dependenciesBadge(process.cwd());
