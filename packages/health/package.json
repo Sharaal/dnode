@@ -3,7 +3,7 @@
     "node": "^7.6.0"
   },
   "name": "@dnode/health",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "",
   "repository": "sharaal/dnode",
   "license": "MIT",
