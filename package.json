@@ -2,11 +2,17 @@
   "scripts": {
     "fmt": "packages/prettier/index.sh",
     "postinstall": "lerna bootstrap && lerna exec ../dependencies-badge/index.js",
-    "test": "mocha --recursive './packages/*/test/**/*.js' && lerna exec --ignore '@dnode/parse-duration' --ignore '@dnode/swig' nsp check"
+    "test": "mocha --require intelli-espower-loader --recursive './packages/*/test/**/*.js' && lerna exec --ignore '@dnode/parse-duration' --ignore '@dnode/swig' nsp check"
+  },
+  "directories": {
+    "test": "packages/*/test/"
   },
   "devDependencies": {
+    "espower-loader": "^1.0.0",
+    "intelli-espower-loader": "^1.0.0",
     "lerna": "^2.7.1",
     "mocha": "^4.1.0",
-    "nsp": "^3.1.0"
+    "nsp": "^3.1.0",
+    "power-assert": "^1.1.0"
   }
 }

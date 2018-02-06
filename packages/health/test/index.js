@@ -1,4 +1,4 @@
-const assert = require('assert');
+const assert = require('power-assert');
 const express = require('express');
 const request = require('supertest');
 
