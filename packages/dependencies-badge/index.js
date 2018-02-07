@@ -43,7 +43,7 @@ function getTree(directoryPath, set) {
 function formatTree(tree, deepth = 0) {
   let formattedTree = '';
   for (const dependency in tree) {
-    formattedTree += `${'  '.repeat(deepth)}`;
+    formattedTree += '  '.repeat(deepth);
     const subCount = directCountTree(tree[dependency]);
     formattedTree += `- [${dependency}](https://www.npmjs.com/package/${dependency}) (${subCount})\n`;
 
