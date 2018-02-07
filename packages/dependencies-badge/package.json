@@ -3,7 +3,7 @@
     "node": "^7.6.0"
   },
   "name": "@dnode/dependencies-badge",
-  "version": "1.7.2",
+  "version": "1.7.3",
   "description": "",
   "repository": "sharaal/dnode",
   "license": "MIT",
