@@ -15,6 +15,12 @@ describe('packages/parse-duration', () => {
     assert.deepEqual(actual, expected);
   });
 
+  it('1 hour 20 minutes in seconds plural', () => {
+    const actual = duration('1h 20m').seconds();
+    const expected = 4800;
+    assert.deepEqual(actual, expected);
+  });
+
   it('4800000 milliseconds in milliseconds', () => {
     const actual = duration(4800000).millisecond();
     const expected = 4800000;
