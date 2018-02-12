@@ -8,16 +8,33 @@ const duration = require('@dnode/duration');
 const milliseconds = duration('1h 20m').milliseconds();
 ```
 
-## Formats
+## Input formats
 
-* ns, nanosecond, nanoseconds
-* microsecond, 'μs', microseconds
-* ms, millisecond, milliseconds
-* s, sec, second, seconds
-* m, min, minute, minutes
-* h, hr, hour, hours
-* d, day, days
-* w, wk, week, weeks
-* month, months
-* y, yr, year, years
-* iso8601
+* `ns`, `nanosecond`
+* `microsecond`, `μs`
+* `ms`, `millisecond`
+* `s`, `sec`, `second`
+* `m`, `min`, `minute`
+* `h`, `hr`, `hour`
+* `d`, `day`
+* `w`, `wk`, `week`
+* `month`
+* `y`, `yr`, `year`
+
+All formats also support the pluralizationed variants (e.g. `seconds`).
+
+## Output format methods
+
+* `.nanoseconds()`
+* `.microseconds()`
+* `.milliseconds()`
+* `.seconds()`
+* `.minutes()`
+* `.hours()`
+* `.days()`
+* `.weeks()`
+* `.months()`
+* `.years()`
+* `.toISOString()`
+
+The output format methods are restricted to the pluralizationed variants to make the duration objects compatible to [moment.duration](http://momentjs.com/docs/#/durations/).

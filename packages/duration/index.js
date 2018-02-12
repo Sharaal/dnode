@@ -7,10 +7,6 @@ module.exports = ms => {
 
   const duration = {};
 
-  for (const format in parse) {
-    duration[format] = () => ms / parse[format];
-  }
-
   const pluralizations = [
     'nanosecond',
     'microsecond',
@@ -24,10 +20,10 @@ module.exports = ms => {
     'year',
   ];
   for (const pluralization of pluralizations) {
-    duration[pluralization + 's'] = duration[pluralization];
+    duration[pluralization + 's'] = () => ms / parse[pluralization];
   }
 
-  duration.iso8601 = () => {
+  duration.toISOString = () => {
     let s = parseInt(ms / 1000);
     ms = ms % 1000;
     let m = parseInt(s / 60);
