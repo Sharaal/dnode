@@ -11,7 +11,7 @@ const value = await cache(
 );
 ```
 
-If the client supports `setJSON()` and `getJSON()` (e.g. [@dnode/redis](https://www.npmjs.com/package/@dnode/redis)) it 
+If the client supports `setJSON()` and `getJSON()` (e.g. [@dnode/redis](https://www.npmjs.com/package/@dnode/redis)) it
 will be used to encode/decode the values.
 
 ```javascript
@@ -37,7 +37,7 @@ const value = await cache(
 );
 ```
 
-If the client supports `second()` (e.g. [@dnode/duration](https://www.npmjs.com/package/@dnode/duration)) it will be used.
+If the expire is an object supporting `seconds()` (e.g. [@dnode/duration](https://www.npmjs.com/package/@dnode/duration) or [moment.duration](http://momentjs.com/docs/#/durations/)) it will be used.
 
 ```javascript
 const cache = require('@dnode/cache')(client);
