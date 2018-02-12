@@ -5,19 +5,19 @@
 ```javascript
 const duration = require('@dnode/duration');
 
-const millisecond = duration('1h 20m').millisecond();
+const milliseconds = duration('1h 20m').milliseconds();
 ```
 
 ## Formats
 
-* ns, nanosecond
-* microsecond, 'μs'
-* ms, millisecond
-* s, sec, second
-* m, min, minute
-* h, hr, hour
-* d, day
-* w, wk, week
-* month
-* y, yr, year
+* ns, nanosecond, nanoseconds
+* microsecond, 'μs', microseconds
+* ms, millisecond, milliseconds
+* s, sec, second, seconds
+* m, min, minute, minutes
+* h, hr, hour, hours
+* d, day, days
+* w, wk, week, weeks
+* month, months
+* y, yr, year, years
 * iso8601
