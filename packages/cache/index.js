@@ -13,8 +13,8 @@ module.exports = client => async (key, get, { expire, invalidate, refresh } = {}
       await client.set(key, value);
     }
     if (expire) {
-      if (expire.seconds) {
-        expire = expire.seconds();
+      if (expire.asSeconds) {
+        expire = expire.asSeconds();
       }
       await client.expire(key, expire);
     }
