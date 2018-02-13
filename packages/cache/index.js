@@ -1,4 +1,4 @@
-module.exports = client => async (key, get, { expire, invalidate } = {}) => {
+module.exports = client => async (key, get, { expire, invalidate, refresh } = {}) => {
   let value;
   if (client.getJSON) {
     value = await client.getJSON(key);
@@ -18,6 +18,8 @@ module.exports = client => async (key, get, { expire, invalidate } = {}) => {
       }
       await client.expire(key, expire);
     }
+  } else if (refresh) {
+    await client.expire(key, expire);
   }
   return value;
 };
