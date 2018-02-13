@@ -3,7 +3,7 @@
     "node": "^7.6.0"
   },
   "name": "@dnode/cache",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "",
   "repository": "sharaal/dnode",
   "license": "MIT",
