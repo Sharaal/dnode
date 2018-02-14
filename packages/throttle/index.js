@@ -3,7 +3,7 @@ const Throttle = require('redis-throttle');
 
 module.exports = config => {
   Throttle.configure(config);
-  return (key, limit, callback) => {
+  return (key, limit, callback, fallback) => {
     let span = '1 second';
     if (typeof limit === 'string') {
       [limit, span] = limit.split(' per ');
@@ -25,7 +25,11 @@ module.exports = config => {
             resolve(callback());
           });
         } else {
-          resolve();
+          if (fallback) {
+            resolve(fallback());
+          } else {
+            resolve();
+          }
         }
       });
     });
