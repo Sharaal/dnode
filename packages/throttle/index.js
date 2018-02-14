@@ -1,4 +1,4 @@
-const duration = require('@maxdome/duration');
+const duration = require('@dnode/duration');
 const Throttle = require('redis-throttle');
 
 module.exports = config => {
