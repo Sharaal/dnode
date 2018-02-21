@@ -3,5 +3,12 @@
 # Usage
 
 ```javascript
-require('@dnode/env');
+require('@dnode/env')();
+
+require('@dnode/controllers')(
+  app,
+  [
+    require('@dnode/env').controller(),
+  ]
+);
 ```
