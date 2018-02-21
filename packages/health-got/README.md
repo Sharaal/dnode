@@ -22,10 +22,7 @@ require('@dnode/controllers')(app, [health]);
          "state": "UP",
          "data": {
             "method": "GET",
-            "url": "http://example.com/",
-            "options": {
-               "json": true
-            }
+            "url": "http://example.com/"
          }
       }
    ]
