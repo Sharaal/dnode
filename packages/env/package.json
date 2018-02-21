@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "dotenv": "^4.0.0",
-    "dotenv-safe": "^4.0.4"
+    "dotenv-safe": "^4.0.4",
+    "lodash.pick": "^4.4.0"
   }
 }

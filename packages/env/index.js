@@ -1,3 +1,6 @@
+const _ = {
+  pick: require('lodash.pick'),
+};
 const fs = require('fs');
 const path = require('path');
 
