@@ -1,0 +1,13 @@
+{
+  "engines": {
+    "node": "^7.6.0"
+  },
+  "name": "@dnode/version",
+  "version": "0.0.0",
+  "description": "",
+  "repository": "sharaal/dnode",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  }
+}
