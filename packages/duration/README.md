@@ -6,33 +6,13 @@
 const duration = require('@dnode/duration');
 
 const milliseconds = duration('1h 20m').asMilliseconds();
+const seconds = duration('1h 20m').asSeconds();
 ```
 
 ## Input formats
 
-* `ns`, `nanosecond`
-* `microsecond`, `μs`
-* `ms`, `millisecond`
-* `s`, `sec`, `second`
-* `m`, `min`, `minute`
-* `h`, `hr`, `hour`
-* `d`, `day`
-* `w`, `wk`, `week`
-* `month`
-* `y`, `yr`, `year`
-
-All formats also support the pluralizationed variants (e.g. `seconds`).
+Supported by [parse-duration](https://www.npmjs.com/package/parse-duration).
 
 ## Output format methods
 
-* `.asMilliseconds()`
-* `.asSeconds()`
-* `.asMinutes()`
-* `.asHours()`
-* `.asDays()`
-* `.asWeeks()`
-* `.asMonths()`
-* `.asYears()`
-* `.toISOString()`
-
-The output format methods are compatible to [moment.duration](http://momentjs.com/docs/#/durations/).
+Supported by [moment.duration](http://momentjs.com/docs/#/durations/).
