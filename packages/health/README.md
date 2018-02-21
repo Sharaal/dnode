@@ -5,10 +5,14 @@ Provides an `/health` endpoint response with the health of the app in the [Micro
 # Usage
 
 ```
-const health = require('@dnode/health')({
-  example: () => {},
-});
-require('@dnode/controllers')(app, [health]);
+require('@dnode/controllers')(
+  app,
+  [
+    require('@dnode/health').controller({
+      example: () => {},
+    }),
+  ]
+);
 ```
 
 # Example response

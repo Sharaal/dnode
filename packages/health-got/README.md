@@ -5,10 +5,14 @@ Provides check function for [`health`](http://npmjs.com/@dnode/health) performin
 # Usage
 
 ```
-const health = require('@dnode/health')({
-  example: require('@dnode/health-got')('http://example.com/'),
-});
-require('@dnode/controllers')(app, [health]);
+require('@dnode/controllers')(
+  app,
+  [
+    require('@dnode/health').controller({
+      example: require('@dnode/health-got')('http://example.com/'),
+    }),
+  ]
+);
 ```
 
 # Example response

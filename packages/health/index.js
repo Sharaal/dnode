@@ -1,4 +1,4 @@
-module.exports = (healths = {}) => [
+module.exports.controller = (healths = {}) => [
   'get',
   [
     '/health',
@@ -21,7 +21,7 @@ module.exports = (healths = {}) => [
       if (checks.find(check => check.state === 'DOWN')) {
         res.status(500).send({ outcome: 'DOWN', checks });
       } else {
-        res.status(200).send({ outcome: 'UP', checks });
+        res.send({ outcome: 'UP', checks });
       }
     },
   ],
