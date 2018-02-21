@@ -11,7 +11,7 @@ module.exports = (healths = {}) => [
           }
           let state = 'UP';
           try {
-            health.check();
+            await health.check();
           } catch (e) {
             state = 'DOWN';
           }

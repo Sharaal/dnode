@@ -112,4 +112,40 @@ describe('packages/health', () => {
         done();
       });
   });
+
+  it('should support async checks', done => {
+    const app = express();
+
+    const health = require('../index')({
+      a: () => {
+        return new Promise((resolve, reject) => {
+          process.nextTick(() => {
+            reject(new Error('test'));
+          });
+        });
+      },
+      b: () => {},
+    });
+    require('@dnode/controllers')(app, [health]);
+
+    request(app)
+      .get('/health')
+      .set('Accept', 'application/json')
+      .expect('Content-Type', /json/)
+      .expect(500)
+      .then(res => {
+        assert.equal(res.body.outcome, 'DOWN');
+        assert.equal(res.body.checks.length, 2);
+
+        assert.equal(res.body.checks[0].name, 'a');
+        assert.equal(res.body.checks[0].state, 'DOWN');
+        assert.deepEqual(res.body.checks[0].data, {});
+
+        assert.equal(res.body.checks[1].name, 'b');
+        assert.equal(res.body.checks[1].state, 'UP');
+        assert.deepEqual(res.body.checks[1].data, {});
+
+        done();
+      });
+  });
 });
