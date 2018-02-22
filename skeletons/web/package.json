@@ -15,10 +15,13 @@
   },
   "dependencies": {
     "@dnode/controllers": "^1.0.5",
-    "@dnode/env": "^1.0.0",
-    "@dnode/express": "^1.0.1",
-    "@dnode/health": "^1.0.3",
-    "@dnode/middlewares": "^1.0.5"
+    "@dnode/env": "^2.0.1",
+    "@dnode/express": "^1.2.0",
+    "@dnode/health": "^2.0.0",
+    "@dnode/log": "^1.1.6",
+    "@dnode/log-middleware": "^1.0.4",
+    "@dnode/middlewares": "^1.0.5",
+    "@dnode/version": "^1.0.0"
   },
   "devDependencies": {
     "@dnode/dependencies-badge": "^1.7.0",

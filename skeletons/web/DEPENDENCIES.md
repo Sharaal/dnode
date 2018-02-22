@@ -1,14 +1,15 @@
 # Dependencies
 
-Directly: 5
+Directly: 8
 
-Indirectly: 55
+Indirectly: 69
 
 - [@dnode/controllers](https://www.npmjs.com/package/@dnode/controllers) (1)
   - [@dnode/handler](https://www.npmjs.com/package/@dnode/handler) (0)
-- [@dnode/env](https://www.npmjs.com/package/@dnode/env) (2)
+- [@dnode/env](https://www.npmjs.com/package/@dnode/env) (3)
   - [dotenv](https://www.npmjs.com/package/dotenv) (0)
   - [dotenv-safe](https://www.npmjs.com/package/dotenv-safe) (0)
+  - [lodash.pick](https://www.npmjs.com/package/lodash.pick) (0)
 - [@dnode/express](https://www.npmjs.com/package/@dnode/express) (1)
   - [express](https://www.npmjs.com/package/express) (30)
     - [accepts](https://www.npmjs.com/package/accepts) (2)
@@ -84,5 +85,24 @@ Indirectly: 55
     - [utils-merge](https://www.npmjs.com/package/utils-merge) (0)
     - [vary](https://www.npmjs.com/package/vary) (0)
 - [@dnode/health](https://www.npmjs.com/package/@dnode/health) (0)
+- [@dnode/log](https://www.npmjs.com/package/@dnode/log) (1)
+  - [winston](https://www.npmjs.com/package/winston) (6)
+    - [async](https://www.npmjs.com/package/async) (0)
+    - [colors](https://www.npmjs.com/package/colors) (0)
+    - [cycle](https://www.npmjs.com/package/cycle) (0)
+    - [eyes](https://www.npmjs.com/package/eyes) (0)
+    - [isstream](https://www.npmjs.com/package/isstream) (0)
+    - [stack-trace](https://www.npmjs.com/package/stack-trace) (0)
+- [@dnode/log-middleware](https://www.npmjs.com/package/@dnode/log-middleware) (1)
+  - [morgan](https://www.npmjs.com/package/morgan) (5)
+    - [basic-auth](https://www.npmjs.com/package/basic-auth) (1)
+      - [safe-buffer](https://www.npmjs.com/package/safe-buffer) (0)
+    - [debug](https://www.npmjs.com/package/debug) (1)
+      - [ms](https://www.npmjs.com/package/ms) (0)
+    - [depd](https://www.npmjs.com/package/depd) (0)
+    - [on-finished](https://www.npmjs.com/package/on-finished) (1)
+      - [ee-first](https://www.npmjs.com/package/ee-first) (0)
+    - [on-headers](https://www.npmjs.com/package/on-headers) (0)
 - [@dnode/middlewares](https://www.npmjs.com/package/@dnode/middlewares) (1)
   - [@dnode/handler](https://www.npmjs.com/package/@dnode/handler) (0)
+- [@dnode/version](https://www.npmjs.com/package/@dnode/version) (0)
