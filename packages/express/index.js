@@ -1,6 +1,6 @@
 const express = require('express');
 
-module.exports = async init => {
+module.exports = async (init, { log: log = console.log } = {}) => {
   const app = express();
   app.disable('x-powered-by');
 
@@ -11,6 +11,6 @@ module.exports = async init => {
     throw new Error('missing port');
   }
   app.listen(port, () => {
-    console.log(`app listen on port ${port}`);
+    log(`app listen on port ${port}`);
   });
 };
