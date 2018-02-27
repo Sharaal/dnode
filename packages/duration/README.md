@@ -17,6 +17,8 @@ Supported by [parse-duration](https://www.npmjs.com/package/parse-duration).
 
 Supported by [moment.duration](http://momentjs.com/docs/#/durations/).
 
-# Why use it over `moment`?
+# FAQ
+
+## Why use it over `moment`?
 
 `moment` split the number and the format in two parameters, e.g. `moment.duration(3, 'days')`. That is not really usable together with environment variables, e.g. `duration(process.env.DURATION || '3 days')`.
