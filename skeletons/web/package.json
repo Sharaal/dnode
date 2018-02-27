@@ -19,7 +19,7 @@
     "@dnode/express": "^1.2.0",
     "@dnode/health": "^2.0.0",
     "@dnode/log": "^1.1.6",
-    "@dnode/log-middleware": "^1.0.4",
+    "@dnode/log-middleware": "^2.0.0",
     "@dnode/middlewares": "^1.0.5",
     "@dnode/version": "^1.0.0"
   },
