@@ -1,6 +1,6 @@
 const morgan = require('morgan');
 
-module.exports = ({ format: format = 'tiny', log: log = console.log } = {}) =>
+module.exports.middleware = ({ format: format = 'tiny', log: log = console.log } = {}) =>
   morgan(format, {
     stream: {
       write: message => {
