@@ -1,25 +1,29 @@
-module.exports = client => async (key, get, { expire, invalidate, refresh } = {}) => {
+module.exports = client => async (key, get, options) => {
+  if ((typeof options === 'object' && options.asSeconds) || typeof options === 'number') {
+    options = { expire: options };
+  }
+  if (typeof options.expire === 'object' && options.expire.asSeconds) {
+    options.expire = options.expire.asSeconds();
+  }
   let value;
   if (client.getJSON) {
     value = await client.getJSON(key);
   } else {
     value = await client.get(key);
   }
-  if (!value || (invalidate && invalidate(value))) {
+  if (!value || (options.invalidate && options.invalidate(value))) {
     value = await get();
     if (client.setJSON) {
-      await client.setJSON(key, value);
+      await client.setJSON(key, value, options.expire);
     } else {
-      await client.set(key, value);
-    }
-    if (expire) {
-      if (expire.asSeconds) {
-        expire = expire.asSeconds();
+      if (options.expire) {
+        await client.set(key, value, 'EX', options.expire);
+      } else {
+        await client.set(key, value);
       }
-      await client.expire(key, expire);
     }
-  } else if (refresh) {
-    await client.expire(key, expire);
+  } else if (options.refresh) {
+    await client.expire(key, options.expire);
   }
   return value;
 };

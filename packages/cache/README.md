@@ -33,11 +33,11 @@ const cache = require('@dnode/cache')(client);
 const value = await cache(
   'key',
   async () => 'value',
-  { expire: 1 * 60 * 60 } // 1h
+  1 * 60 * 60
 );
 ```
 
-If the expire is an object supporting `seconds()` (e.g. [@dnode/duration](https://www.npmjs.com/package/@dnode/duration) or [moment.duration](http://momentjs.com/docs/#/durations/)) it will be used.
+If the expire is an object supporting `asSeconds()` (e.g. [@dnode/duration](https://www.npmjs.com/package/@dnode/duration) or [moment.duration](http://momentjs.com/docs/#/durations/)) it will be used.
 
 ```javascript
 const cache = require('@dnode/cache')(client);
@@ -46,7 +46,7 @@ const duration = require('@dnode/duration');
 const value = await cache(
   'key',
   async () => 'value',
-  { expire: duration('1h') }
+  duration('1h')
 );
 ```
 
@@ -61,5 +61,19 @@ const value = await cache(
   'key',
   async () => 'value',
   { invalidate: value => value.invalid }
+);
+```
+
+## Refresh
+
+If `refresh` is `true`, the expire will always be refreshed if the key is available and the value is valid.
+
+```javascript
+const cache = require('@dnode/cache')(client);
+
+const value = await cache(
+  'key',
+  async () => 'value',
+  { refresh: true }
 );
 ```
