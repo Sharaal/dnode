@@ -1,7 +1,5 @@
 const assert = require('power-assert');
 
-const moment = require('moment');
-
 const duration = require('../');
 
 describe('packages/parse-duration', () => {
