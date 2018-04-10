@@ -77,3 +77,4 @@ const value = await cache(
   { refresh: true }
 );
 ```
+ 
