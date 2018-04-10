@@ -18,4 +18,3 @@ const redis = require('@dnode/redis')(process.env.REDIS_URL);
 await redis.setJSON('key', 'value', duration('1h'));
 const value = await redis.getJSON('key');
 ```
- 
