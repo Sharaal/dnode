@@ -2,7 +2,7 @@
 
 Directly: 6
 
-Indirectly: 58
+Indirectly: 60
 
 - [lodash.clonedeep](https://www.npmjs.com/package/lodash.clonedeep) (0)
 - [lodash.isarray](https://www.npmjs.com/package/lodash.isarray) (0)
@@ -20,10 +20,11 @@ Indirectly: 58
     - [mime-types](https://www.npmjs.com/package/mime-types) (1)
       - [mime-db](https://www.npmjs.com/package/mime-db) (0)
   - [har-validator](https://www.npmjs.com/package/har-validator) (2)
-    - [ajv](https://www.npmjs.com/package/ajv) (2)
+    - [ajv](https://www.npmjs.com/package/ajv) (4)
       - [co](https://www.npmjs.com/package/co) (0)
-      - [json-stable-stringify](https://www.npmjs.com/package/json-stable-stringify) (1)
-        - [jsonify](https://www.npmjs.com/package/jsonify) (0)
+      - [fast-deep-equal](https://www.npmjs.com/package/fast-deep-equal) (0)
+      - [fast-json-stable-stringify](https://www.npmjs.com/package/fast-json-stable-stringify) (0)
+      - [json-schema-traverse](https://www.npmjs.com/package/json-schema-traverse) (0)
     - [har-schema](https://www.npmjs.com/package/har-schema) (0)
   - [hawk](https://www.npmjs.com/package/hawk) (4)
     - [boom](https://www.npmjs.com/package/boom) (1)
@@ -36,7 +37,8 @@ Indirectly: 58
     - [jsprim](https://www.npmjs.com/package/jsprim) (3)
       - [extsprintf](https://www.npmjs.com/package/extsprintf) (0)
       - [json-schema](https://www.npmjs.com/package/json-schema) (0)
-      - [verror](https://www.npmjs.com/package/verror) (0)
+      - [verror](https://www.npmjs.com/package/verror) (1)
+        - [core-util-is](https://www.npmjs.com/package/core-util-is) (0)
     - [sshpk](https://www.npmjs.com/package/sshpk) (7)
       - [asn1](https://www.npmjs.com/package/asn1) (0)
       - [bcrypt-pbkdf](https://www.npmjs.com/package/bcrypt-pbkdf) (1)

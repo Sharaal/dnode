@@ -2,10 +2,11 @@
 
 Directly: 1
 
-Indirectly: 8
+Indirectly: 9
 
 - [morgan](https://www.npmjs.com/package/morgan) (5)
-  - [basic-auth](https://www.npmjs.com/package/basic-auth) (0)
+  - [basic-auth](https://www.npmjs.com/package/basic-auth) (1)
+    - [safe-buffer](https://www.npmjs.com/package/safe-buffer) (0)
   - [debug](https://www.npmjs.com/package/debug) (1)
     - [ms](https://www.npmjs.com/package/ms) (0)
   - [depd](https://www.npmjs.com/package/depd) (0)

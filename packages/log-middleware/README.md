@@ -1,4 +1,4 @@
-[![dependencies | 1 | 8](https://img.shields.io/badge/dependencies-1%20|%208-blue.svg)](DEPENDENCIES.md)
+[![dependencies | 1 | 9](https://img.shields.io/badge/dependencies-1%20|%209-blue.svg)](DEPENDENCIES.md)
 
 # Usage
 

@@ -1,6 +1,7 @@
-/.idea
 /lerna-debug.log*
 /node_modules
 /packages/*/node_modules
 /npm-debug.log*
+/packages/*/npm-debug.log*
 /package-lock.json
+/packages/*/package-lock.json
