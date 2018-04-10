@@ -3,7 +3,7 @@
     "node": "^7.6.0"
   },
   "name": "@dnode/env",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "",
   "repository": "sharaal/dnode",
   "license": "MIT",

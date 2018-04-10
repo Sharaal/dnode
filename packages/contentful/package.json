@@ -3,7 +3,7 @@
     "node": "^7.6.0"
   },
   "name": "@dnode/contentful",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "",
   "repository": "sharaal/dnode",
   "license": "MIT",
