@@ -5,6 +5,16 @@
 ```javascript
 const redis = require('@dnode/redis')(process.env.REDIS_URL);
 
-await redis.setJSON('key', 'value');
+await redis.setJSON('key', 'value', 1 * 60 * 60);
+const value = await redis.getJSON('key');
+```
+
+If the expire is an object supporting `asSeconds()` (e.g. [@dnode/duration](https://www.npmjs.com/package/@dnode/duration) or [moment.duration](http://momentjs.com/docs/#/durations/)) it will be used.
+
+```javascript
+const duration = require('@dnode/duration');
+const redis = require('@dnode/redis')(process.env.REDIS_URL);
+
+await redis.setJSON('key', 'value', duration('1h'));
 const value = await redis.getJSON('key');
 ```
