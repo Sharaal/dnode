@@ -49,6 +49,12 @@ class Asset {
     this.seasonNumber = data.seasonNumber || data.number;
 
     this.description = data.descriptionShort;
+    this.descriptions = {
+      long: data.descriptionLong,
+      short: data.descriptionShort,
+      soft: data.descriptionSoft,
+      teaser: data.descriptionTeaser,
+    };
 
     if (data.coverList) {
       const poster = data.coverList.filter(cover => cover.usageType === 'poster')[0];
