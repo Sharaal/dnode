@@ -2,13 +2,30 @@
 
 # Usage
 
+## The controller
+
+```javascript
+require('@dnode/controllers')(app, [
+  require('@dnode/version').controller(),
+]);
+```
+
+## Only the version
+
 ```javascript
 const version = require('@dnode/version')();
+```
 
-require('@dnode/controllers')(
-  app,
-  [
-    require('@dnode/version').controller(),
-  ]
-);
+# Swagger
+
+```yaml
+paths:
+  /version:
+    get:
+      summary: "Response the version of the app"
+      responses:
+        200:
+          description: "OK"
+        500:
+          description: "Internal Server Error"
 ```
