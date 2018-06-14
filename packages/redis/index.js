@@ -2,29 +2,25 @@ const Redis = require('ioredis');
 
 module.exports = url => {
   const redis = new Redis(url);
-
-  redis.setJSON = async (...arguments) => {
-    arguments[1] = JSON.stringify(arguments[1]);
-    if (typeof arguments[2] === 'object' && arguments[2].asSeconds) {
-      arguments[2] = parseInt(arguments[2].asSeconds());
-    }
-    if (typeof arguments[2] === 'number') {
-      arguments[3] = parseInt(arguments[2]);
-      arguments[2] = 'EX';
-    }
-    if (typeof arguments[2] === 'undefined') {
-      arguments = [arguments[0], arguments[1]];
-    }
-    return await redis.set.apply(redis, arguments);
-  }
-
-  redis.getJSON = async key => {
-    const value = await redis.get(key);
-    if (value) {
-      return JSON.parse(value);
-    }
-    return value;
-  }
-
-  return redis;
+  return {
+    clear: async () => await redis.flushdb(),
+    delete: async key => await redis.del(key),
+    get: async key => {
+      const value = await redis.get(key);
+      if (value) {
+        return JSON.parse(value);
+      }
+    },
+    redis,
+    set: async (key, value, ttl) => {
+      value = JSON.stringify(value);
+      if (ttl) {
+        if (typeof ttl === 'object' && ttl.asSeconds) {
+          ttl = parseInt(ttl.asSeconds());
+        }
+        return await redis.set(key, value, 'EX', ttl);
+      }
+      return await redis.set(key, value);
+    },
+  };
 };
