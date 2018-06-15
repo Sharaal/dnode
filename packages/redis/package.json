@@ -3,7 +3,7 @@
     "node": "^7.6.0"
   },
   "name": "@dnode/redis",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "",
   "repository": "sharaal/dnode",
   "license": "MIT",
