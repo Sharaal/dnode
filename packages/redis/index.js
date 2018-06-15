@@ -5,6 +5,12 @@ module.exports = url => {
   return {
     clear: async () => await redis.flushdb(),
     delete: async key => await redis.del(key),
+    expire: async (key, ttl) => {
+      if (typeof ttl === 'object' && ttl.asSeconds) {
+        ttl = parseInt(ttl.asSeconds());
+      }
+      return await redis.expire(key, ttl);
+    },
     get: async key => {
       const value = await redis.get(key);
       if (value) {
