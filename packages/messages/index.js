@@ -16,29 +16,31 @@ module.exports = ({ qname: qname = 'queue', redisUrl } = {}) =>
 
     rsmq.createQueue({ qname }, (err, resp) => {
       resolve({
-        send: (message, delay) => new Promise((resolve, reject) => {
-          message = JSON.stringify(message);
-          if (typeof delay === 'object' && delay.asSeconds) {
-            delay = parseInt(delay.asSeconds());
-          }
-          rsmq.sendMessage({ qname, message, delay }, (err, resp) => {
-            if (err) {
-              reject(err);
-            } else {
-              resolve(resp);
-          	}
-          });
-        }),
-        delete: (id) => new Promise((resolve, reject) => {
-          rsmq.deleteMessage({ qname, id }, (err, resp) => {
-            if (err) {
-              reject(err);
-            } else {
-              resolve();
-          	}
-          });
-        }),
-        handle: (handler) => {
+        send: (message, delay) =>
+          new Promise((resolve, reject) => {
+            message = JSON.stringify(message);
+            if (typeof delay === 'object' && delay.asSeconds) {
+              delay = parseInt(delay.asSeconds());
+            }
+            rsmq.sendMessage({ qname, message, delay }, (err, resp) => {
+              if (err) {
+                reject(err);
+              } else {
+                resolve(resp);
+              }
+            });
+          }),
+        delete: id =>
+          new Promise((resolve, reject) => {
+            rsmq.deleteMessage({ qname, id }, (err, resp) => {
+              if (err) {
+                reject(err);
+              } else {
+                resolve();
+              }
+            });
+          }),
+        handle: handler => {
           const worker = new RSMQWorker(qname, { rsmq });
           worker.on('message', async (message, next, id) => {
             try {
