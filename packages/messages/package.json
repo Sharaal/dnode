@@ -1,0 +1,17 @@
+{
+  "engines": {
+    "node": "^7.6.0"
+  },
+  "name": "@dnode/messages",
+  "version": "0.0.0",
+  "description": "",
+  "repository": "sharaal/dnode",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "rsmq": "^0.8.5",
+    "rsmq-worker": "^0.5.2"
+  }
+}
