@@ -8,21 +8,15 @@ The information which will be used:
 
 ## Initialize with useful environment variables
 
-`apikey` and `appid` are only needed if there are requests with another platform as `webportal`. `hostname` and `protocol` has the production api (https://heimdall.maxdome.de) as default.
+`hostname` and `protocol` has the production api (https://heimdall.maxdome.de) as default.
 
 ```javascript
-const maxdome = require('@dnode/request-maxdome').getRequestBuilder({
-  maxdomeOptions: {
-    apikey: process.env.MAXDOME_APIKEY,
-    appid: process.env.MAXDOME_APPID,
-  }
-});
+const maxdome = require('@dnode/request-maxdome').getRequestBuilder();
 ```
 
 ## Get information for a specific asset by ID
 
 ```javascript
-const maxdome = require('@dnode/request-maxdome').getRequestBuilder();
 const AssetOptions = require('@dnode/request-maxdome').AssetOptions;
 
 const assetId = 'assetId';
@@ -32,7 +26,6 @@ const assets = await maxdome.send(new AssetOptions(assetId));
 ## Search assets by title and get the first 3 results
 
 ```javascript
-const maxdome = require('@dnode/request-maxdome').getRequestBuilder();
 const AssetsQueryOptions = require('@dnode/request-maxdome').AssetsQueryOptions;
 
 const title = 'title';
@@ -40,14 +33,13 @@ const assetsQueryOptions = new AssetsQueryOptions()
   .addFilter('contentTypeSeriesOrMovies')
   .addFilter('search', title)
   .addQuery('pageSize', 3);
-    
+
 const assets = await maxdome.request('assets').send(assetsQueryOptions);
 ```
 
 ## Get the 50 newest store movies
 
 ```javascript
-const maxdome = require('@dnode/request-maxdome').getRequestBuilder();
 const AssetsQueryOptions = require('@dnode/request-maxdome').AssetsQueryOptions;
 
 const assetsQueryOptions = new AssetsQueryOptions()
@@ -57,6 +49,6 @@ const assetsQueryOptions = new AssetsQueryOptions()
   .addFilter('notUnlisted')
   .addQuery('pageSize', 50)
   .addSort('activeLicenseStart', 'desc');
-    
+
 const assets = await maxdome.request('assets').send(assetsQueryOptions);
 ```
